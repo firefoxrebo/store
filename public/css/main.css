@@ -496,6 +496,10 @@ div.wrapper {
                 padding: 0;
             }
 
+                div.box ul.mainNav li {
+                    position: relative;
+                }
+
                 div.box ul.mainNav li.disabled {
                     display: none;
                 }
@@ -509,14 +513,45 @@ div.wrapper {
                         position: relative;
                         color: #515A6B;
                         text-align: center;
-                        position: relative;
+                        z-index: 200;
+                        background: #FFF;
+                        height: 22px;
+                    }
+
+                    div.box ul.mainNav li span {
+                        position: absolute;
+                        top:0;
+                        right: -170px;
+                        display: block;
+                        min-width: 150px;
+                        padding: 15px 10px 0 10px;
+                        height: 33px;
+                        background: #3D89B1;
+                        color: #fff;
+                        -webkit-transition: all 0.3s ease-in-out;
+                        -moz-transition: all 0.3s ease-in-out;
+                        -ms-transition: all 0.3s ease-in-out;
+                        -o-transition: all 0.3s ease-in-out;
+                        transition: all 0.3s ease-in-out;
+                        text-align: center;
+                        z-index: 199;
+                    }
+
+                    div.box ul.mainNav li:hover > span {
+                        right: 55px;
                     }
 
                     div.box > ul.mainNav > li a:hover,
                     div.box > ul.mainNav > li a:active,
+                    div.box > ul.mainNav > li a:focus,
                     div.box > ul.mainNav > li a.selected {
                         background: #f3f5f7;
                         color: #3D89B1;
+                    }
+
+                    div.box ul.mainNav li:hover a {
+                        background: #3D89B1;
+                        color: #fff;
                     }
 
                     div.box ul.mainNav li a i {
