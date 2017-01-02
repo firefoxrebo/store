@@ -1,0 +1,1918 @@
+/*! HTML5 Boilerplate v4.3.0 | MIT License | http://h5bp.com/ */
+
+/*
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ */
+
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
+
+html,
+button,
+input,
+select,
+textarea {
+    color: #222;
+}
+
+html {
+    font-size: 1em;
+    line-height: 1.4;
+    direction: rtl;
+}
+
+/*
+ * Remove text-shadow in selection highlight: h5bp.com/i
+ * These selection rule sets have to be separate.
+ * Customize the background color to match your design.
+ */
+
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+/*
+ * A better looking default horizontal rule
+ */
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+/*
+ * Remove the gap between images, videos, audio and canvas and the bottom of
+ * their containers: h5bp.com/i/440
+ */
+
+audio,
+canvas,
+img,
+video {
+    vertical-align: middle;
+}
+
+/*
+ * Remove default fieldset styles.
+ */
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+
+textarea {
+    resize: vertical;
+}
+
+/* ==========================================================================
+   Browse Happy prompt
+   ========================================================================== */
+
+.browsehappy {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+@font-face {
+    font-family: 'NeoSansArabic';
+    src: url('fonts/NeoSansArabic.eot?') format('eot'),
+    url('fonts/NeoSansArabic.woff') format('woff'),
+    url('fonts/NeoSansArabic.ttf')  format('truetype'),
+    url('fonts/NeoSansArabic.svg#NeoSansArabic') format('svg');
+}
+
+@font-face {font-family: "Neo Sans Arabic Bold";
+    src: url("fonts/8748f5068427fc51038324b33a9a85dd.eot"); /* IE9*/
+    src: url("fonts/8748f5068427fc51038324b33a9a85dd.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("fonts/8748f5068427fc51038324b33a9a85dd.woff2") format("woff2"), /* chrome、firefox */
+    url("fonts/8748f5068427fc51038324b33a9a85dd.woff") format("woff"), /* chrome、firefox */
+    url("fonts/8748f5068427fc51038324b33a9a85dd.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url("fonts/8748f5068427fc51038324b33a9a85dd.svg#Neo Sans Arabic Bold") format("svg"); /* iOS 4.1- */
+}
+
+@font-face {font-family: "Neo Sans Arabic Medium";
+    src: url("fonts/7668f634eb4865a48f04d52ea3fb9b27.eot"); /* IE9*/
+    src: url("fonts/7668f634eb4865a48f04d52ea3fb9b27.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("fonts/7668f634eb4865a48f04d52ea3fb9b27.woff2") format("woff2"), /* chrome、firefox */
+    url("fonts/7668f634eb4865a48f04d52ea3fb9b27.woff") format("woff"), /* chrome、firefox */
+    url("fonts/7668f634eb4865a48f04d52ea3fb9b27.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url("fonts/7668f634eb4865a48f04d52ea3fb9b27.svg#Neo Sans Arabic Medium") format("svg"); /* iOS 4.1- */
+}
+
+body {
+    background: #e9ecef;
+}
+
+html, body, h1, h2, h3, h4, h5, h6, p, pre,
+ul, ol, li, a, img, div, form, input,
+input, textarea, table, tr, th, td, nav,
+footer, header, hgroup, menu, figure, figcaption, time, meter {
+    margin:0;
+    padding: 0;
+    border: none;
+    outline: none;
+    vertical-align: baseline;
+}
+
+h1, h2, h3, h4, h5, h6, p, li, a, input, select,
+textarea, legend, label, th, td, blockquote, q, span {
+    font-size: 100%;
+    font-weight: normal;
+    line-height: 1.2;
+    font-family: 'NeoSansArabic' !important;
+    color: #666;
+}
+
+h2.header {
+    padding: 20px;
+    font-weight: bold;
+
+}
+
+a:link, a:visited {
+    color: #3D89B1;
+    text-decoration: none;
+    outline: none;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+div.wrapper {
+    max-width: 100%;
+}
+
+    header.topHeader {
+        height: 45px;
+        background: #3D89B1;
+        box-shadow: 0 2px 4px rgba(0,0,0,.15);
+    }
+
+        div.headerNav {
+            margin: 0;
+            height: 100%;
+        }
+
+            div.headerNav ul li {
+                float: right;
+                position: relative;
+                z-index: 101;
+            }
+
+                div.headerNav ul li a:link,
+                div.headerNav ul li a:visited {
+                    color: #FFF;
+                    display: block;
+                    vertical-align: middle;
+                    width: 30px;
+                    font: 1.35em 'Arial';
+                    border-left: 1px solid #4498C3;
+                    height: 35px;
+                    padding: 10px 12px 0 12px;
+                    text-align: center;
+                    position: relative;
+                    text-decoration: none;
+                }
+
+                div.headerNav ul li a:hover,
+                div.headerNav ul li a:active {
+                    background-color: #165F86;
+                }
+
+                div.headerNav ul li a.selected {
+                    color: #FFF;
+                    border-left: 1px solid #4498C3;
+                    border-right: 1px solid #4498C3;
+                    background-color: #165F86;
+                }
+
+                div.headerNav > ul > li:nth-child(3),
+                div.headerNav > ul > li:last-child {
+                    float: left;
+                }
+                
+                div.headerNav > ul > li > h1 {
+                    color: white;
+                    margin: 13px 13px 0 0;
+                }
+
+                    div.notificationCount {
+                        width: 13px;
+                        height: 15px;
+                        background: rgb(213, 2, 2);
+                        border-radius: 2px;
+                        font-size: 0.5em;
+                        color: #FFF;
+                        text-align: center;
+                        padding: 2px 0 0 0;
+                        position: absolute;
+                        top:5px;
+                        right: 10px;
+                    }
+
+                div.headerNav ul li ul {
+                    position: absolute;
+                    background: #FFF;
+                    width: 400px;
+                    box-shadow: 0 1px 5px 0 rgba(56,61,72,0.21);
+                    top: 50px;
+                    left: 0px;
+                    display: none;
+                }
+
+                div.headerNav ul li ul.user {
+                    width: 140px;
+                    left: 10px;
+                }
+
+                    div.headerNav ul li ul li {
+                        float: none;
+                    }
+
+                        div.headerNav ul li ul li a:link,
+                        div.headerNav ul li ul li a:visited {
+                            font-size: 0.8em;
+                            color: #444;
+                            width: 380px;
+                            padding: 10px;
+                            border-left: none;
+                            text-align: right;
+                            border-bottom: solid 1px #EFEFEF;
+                        }
+
+                        div.headerNav ul li ul.user li a:link,
+                        div.headerNav ul li ul.user li a:visited {
+                            font-size: 0.8em;
+                            color: #444;
+                            width: 120px;
+                            height: 25px;
+                            padding: 10px 10px 0px 10px;
+                            border-left: none;
+                            text-align: right;
+                            border-bottom: solid 1px #EFEFEF;
+                        }
+
+                        div.headerNav ul li ul li a:hover,
+                        div.headerNav ul li ul li a:active {
+                            background: #f3f5f6;
+                        }
+
+                        div.headerNav ul li ul li a i {
+                            display: block;
+                            margin: 5px 0 0 0;
+                            color: #666;
+                        }
+
+                        div.headerNav ul li ul li a i:first-child {
+                            display: block;
+                            float: right;
+                            margin: 0 0 0 10px;
+                            color: #666;
+                        }
+
+                    div.headerNav ul li ul header {
+                        padding: 10px 10px 6px 10px;
+                        border-bottom: solid 1px #EFEFEF;         
+                        font-size: 0.8em;
+                        position: relative;
+                    }
+
+                        div.headerNav ul li ul header > a:link,
+                        div.headerNav ul li ul header > a:visited {
+                            position: absolute;
+                            top: 8px;
+                            left: 14px;
+                            font-size: 1.3em;
+                            width: 10px;
+                            height: 10px;
+                            padding: 0;
+                            border: none;
+                            color: #666666;
+                        }
+
+                        div.headerNav ul li ul header > a:hover,
+                        div.headerNav ul li ul header > a:active {
+                            background: none;
+                        }
+
+                        div.headerNav ul li ul header div.pointer {
+                            width: 0;
+                            height: 0;
+                            border-style: solid;
+                            border-width: 0 10px 10px 10px;
+                            border-color: transparent transparent #ffffff transparent;
+                            position: absolute;
+                            top: -10px;
+                            left: 10px;
+                        }
+
+                    div.headerNav ul li ul footer {
+                        padding: 10px 10px 6px 10px;
+                        background: #f3f5f6;
+                        border-bottom: solid 1px #EFEFEF;
+                        
+                        font-size: 0.8em;
+                        position: relative;
+                    }
+
+                        div.headerNav ul li ul footer a:link,
+                        div.headerNav ul li ul footer a:visited {
+                            height: 20px;
+                            width: 100%;
+                            padding: 0;
+                            margin: 0;
+                            font-size: 1em;
+                            color: #3D89B1;
+                            border: none;
+                        }
+
+                        div.headerNav ul li ul footer a:hover,
+                        div.headerNav ul li ul footer a:active {
+                            background: none;
+                        }
+
+    div.content {
+        margin: 0;
+    }
+        div.leftColumn {
+            background: transparent;
+            min-width: 55px;
+            float: right;
+        }
+
+            div.contentBox {
+                background: #FFF;
+                border-radius: 2px;
+                padding: 15px;
+                position: relative;
+                z-index: 100;
+            }
+
+                div.contentBox a.close {
+                    position: absolute;
+                    top:15px;
+                    right: 15px;
+                }
+
+                div.contentBox p {
+                    font-size: 0.9em;
+                    line-height: 1.4;
+                    margin: 0 0 10px 0;
+                }
+
+                div.contentBox h3 {
+                    
+                    margin: 0 0 15px 0;
+                }
+
+                div.userInfo > img {
+                    display: block;
+                    float: left;
+                }
+
+                div.userInfo img.logo {
+                    display: block;
+                    float: none;
+                    margin: 0px auto;
+                }
+
+                div.userInfo div.userInfoDetails {
+                    float: right;
+                    width: 120px;
+                }
+
+                    div.userInfoDetails span.userPrivilege
+                    {
+                        display: block;
+                        font-size: 0.8em;
+                        margin: 3px 0 0 0;
+                    }
+
+                    div.userInfoDetails span.userPrivilege img {
+                        vertical-align: middle;
+                        margin: 0 3px 0 0;
+                    }
+
+                span.profileCompletion {
+                    display: block;
+                    width: 100%;
+                    font-size: 0.8em;
+                }
+
+                div.userInfo p {
+                    float: left;
+                    font-size: 0.8em;
+                    font-weight: bold;
+                    margin: 10px 0 5px 0;
+                }
+
+                div.userInfo meter {
+                    display: block;
+                    float: right;
+                    width: 100%;
+                }
+
+            div.block {
+                margin: 0 0 20px 0;
+                /*box-shadow: 0 1px 5px 0 rgba(56,61,72,0.21);*/
+                background: #FFF;
+            }
+
+            div.rightColumn div.block:first-child {
+                margin: 0;
+            }
+
+                div.block header {
+                    background: #3D89B1;
+                    padding: 15px;
+                    border-radius: 2px 2px 0 0;
+                    position: relative;
+                }
+
+                    div.block header h2 > i {
+                        position: absolute;
+                        top: 13px;
+                        left: 15px;
+                        font-size: 1.4em;
+                    }
+
+                    div.block header h2 {
+                        color: #FFF;
+                    }
+
+                div.block header.white {
+                    background: #FFF;
+                    border-bottom: 1px solid #EFEFEF;
+                    padding: 20px;
+                    border-radius: 2px 2px 0 0;
+                    position: relative;
+                }
+
+                    div.block header.white h2 {
+                        color: #666;
+                        font-size: 1.1em;
+                        font-weight: normal;
+                    }
+
+                div.block footer {
+                    padding: 20px;
+                    background: #f3f5f6;
+                    border-top: 1px solid #EFEFEF;
+                }
+
+                    div.block footer p {
+                        font-size: 0.8em;
+                        text-align: left;
+                    }
+
+            div.block div.box {
+                background: #FFF;
+                padding: 0;
+            }
+
+                div.box ul.mainNav li.disabled {
+                    display: none;
+                }
+
+                    div.box ul.mainNav li a:link,
+                    div.box ul.mainNav li a:visited {
+                        display: block;
+                        padding: 13px 0px;
+                        border-bottom: 1px solid #EFEFEF;
+                        font-size: 1.2em;
+                        position: relative;
+                        color: #515A6B;
+                        text-align: center;
+                        position: relative;
+                    }
+
+                    div.box > ul.mainNav > li a:hover,
+                    div.box > ul.mainNav > li a:active,
+                    div.box > ul.mainNav > li a.selected {
+                        background: #f3f5f7;
+                        color: #3D89B1;
+                    }
+
+                    div.box ul.mainNav li a i {
+                        display: inline-block;
+                    }
+
+                    div.box ul.mainNav li a i:nth-of-type(2) {
+                        position: absolute;
+                        top: 5px;
+                        right: 23px;
+                        font-size: 50%;
+                    }
+
+                    div.box ul.mainNav li a div.messageCount {
+                        background: #515A6B;
+                        color: #ffffff;
+                        border-radius: 2px;
+                        padding: 5px 5px 3px 5px;
+                        position: absolute;
+                        left: 15px;
+                        top: 10px;
+                        text-align: center;
+                        font-size: 0.8em;
+                    }
+                    
+                    div.box ul.mainNav li ul {
+                        display: none;
+                        padding: 10px 0;
+                        background: #f1f1f1;
+                    }
+                    
+                    div.box ul.mainNav li ul.selected {
+                        display: block;
+                    }
+
+                    div.box ul.mainNav li ul li a:link,
+                    div.box ul.mainNav li ul li a:visited {
+                        background-color: #f1f1f1;
+                        font-size: 0.75em;
+                        padding: 7px 30px 7px 15px;
+                    }
+
+                    div.box ul.mainNav li ul li a.selected {
+                        text-decoration: underline;
+                    }
+
+        div.rightColumn {
+            background: transparent;
+            border-right: solid 1px #f1f1f1;
+            margin-right: 55px;
+        }
+
+        div.rightColumn div.contentBox {
+            padding: 20px;
+        }
+
+            div.rightColumn div.contentBox h2 {
+                font: 1em 'neosansmedium';
+                margin: 0 0 20px 0;
+                display: inline-block;
+                /*border-bottom: dotted 1px #e4e4e4;*/
+                padding: 0 0 5px 0;
+            }
+
+            div.contentStatBox {
+                margin-bottom: 10px;
+            }
+
+            div.notification {
+                padding: 20px;
+            }
+
+            div.conversation {
+                margin: 0 0 15px 0;
+            }
+
+            div.conversation:last-child {
+                margin: 0;
+            }
+
+            div.conversation > img {
+                float: left;
+            }
+
+            div.conversation div.convText {
+                float: right;
+                margin: 0 15px 0 0;
+                width: 600px;
+            }
+
+            div.conversation div.convText a.like {
+                font-size: 0.85em;
+            }
+
+                div.statboxWrapper div.statBox {
+                    float: right;
+                    margin: 20px 0 0 20px;
+                    border-left: 1px solid #EFEFEF;
+                    padding: 0 20px 0 20px;
+                    width: 119px;
+                }
+
+                div.statboxWrapper div.statBox:last-child {
+                    margin: 20px 0 0 0;
+                    padding: 0 20px 0 0;
+                    border: none;
+                }
+
+
+                    div.statBox span.statTitle {
+                        font-size: 0.85em;
+                        
+                        display: block;
+                    }
+
+                    div.statBox > a {
+                        display: block;
+                        font-size: 3em;
+                        color: #666;
+                        margin: 10px 0 0 0;
+                    }
+
+            div.statTable table {
+                width: 100%;
+                clear: both;
+            }
+            div.statTable table tr:first-child {
+                border-bottom: solid 1px #EFEFEF;
+            }
+
+            div.statTable table tr th {
+                font-size: 0.85em;
+                font-weight: bold;
+                padding: 5px 10px 10px 0px;
+                border-left: solid 1px #EFEFEF;
+                text-align: right;
+                border-bottom: solid 3px #e0e0e0;
+            }
+
+            div.statTable table tr th:last-child {
+                text-align: center;
+                border-left: none;
+            }
+
+            div.statTable table tr td {
+                font-size: 0.85em;
+                padding: 8px 10px 8px 5px;
+                text-align: right;
+                border-bottom: solid 1px #EFEFEF;
+            }
+
+            div.statTable table tr td:last-child {
+                text-align: center;
+            }
+
+            div.statTable.report table tr td:last-child,
+            div.statTable.report table tr th:last-child {
+                text-align: right;
+            }
+
+            div.statTable table tr:nth-child(odd) {
+                background: #f3f5f6;
+            }
+
+            div.statTable table tr.odd {
+                background: #f3f5f6 !important;
+            }
+
+            div.statTable table tr:first-child {
+                background: transparent;
+            }
+
+            div.statTable table tr td a.linethrough {
+                text-decoration: line-through;
+            }
+
+            div.statTable table tr td:last-child a {
+                display: inline-block;
+                margin-left: 5px;
+                font-size: 1.1em;
+            }
+
+            div.statTable table tbody tr:only-child td[colspan] {
+                text-align: right;
+            }
+
+            div.statTable {
+                float: left;
+                width: 100%;
+                margin: 10px 0;
+            }
+
+        a.button:link, a.button:visited {
+            display: inline-block;
+            float: left;
+            background: #3D89B1;
+            color: #FFF;
+            border-radius: 2px;
+            padding: 10px 10px 7px 10px;
+            font-size: 0.8em;
+            margin: 0 0 20px 0;
+        }
+
+    footer.main {
+        /*width: 960px;*/
+        /*margin: 15px auto;*/
+    }
+
+        footer.main p {
+            font-size: 0.75em;
+            text-align: center;
+        }
+
+            footer.main p a {
+                display: inline-block;
+                padding: 0 10px;
+                border-right: solid 1px #999;
+            }
+
+            footer.main p a:last-child {
+                border-right: none;
+            }
+
+
+p.note {
+    background: #f1f1f1;
+    padding: 5px;
+    margin: 2px 0 0 0 !important;
+}
+
+p.note span {
+    display: inline-block;
+    float: left;
+}
+
+div.block.login {
+    width: 400px;
+    margin: 100px auto 0 auto;
+}
+
+div.block.login form.appForm input[type=text],
+div.block.login form.appForm input[type=password] {
+    width: 97%;
+}
+
+div.block.login form.appForm table tr td {
+    padding: 3px 0;
+}
+
+div.introBox {
+
+}
+
+div.printable header {
+    background: none;
+}
+
+div.printable header h1 {
+    text-align: center;
+    font-size: 1.5em;
+}
+
+div.printable p.date {
+    margin: 10px 0;
+}
+
+div.printable h2 {
+    margin: 15px 0 !important;
+}
+
+div.printable h4 {
+    font-weight: bold;
+}
+
+div.printable div.contractContent {
+    margin: 30px 0 0 0;
+}
+
+p.stat {
+    background: #3D89B1;
+    padding: 10px;
+    color: #FFF;
+    font-size: 0.8em;
+    float: left;
+    border-radius: 3px;
+    margin: -30px 10px 0 0;
+}
+
+div.message p a:link,
+div.message p a:visited {
+    color: #FFF;
+    text-decoration: underline;
+}
+
+            
+/*
+ * Training Dashboard
+ */
+
+div.trainingDashboard ul li {
+	float: left;
+	margin: 6px;
+	width: 100px;
+	height: 100px;
+}
+            
+div.trainingDashboard ul li a:link,
+div.trainingDashboard ul li a:visited {
+	display: block;
+	border: solid 1px #efefef;
+	width: 50px;
+	height: 40px;
+	padding: 10px 5px;
+	text-align: center;
+	font-size: 2.5em;
+	color: #666;
+	border-radius: 2px;
+	margin: 0 auto 10px auto;
+}
+
+div.trainingDashboard ul li span {
+	font-size: 0.85em;
+	display: block;
+	text-align: center;
+}
+
+div.contentBox ul.dashboard_controls li {
+    float: right;
+    margin: 12px;
+}
+
+div.contentBox ul.dashboard_controls li a:link,
+div.contentBox ul.dashboard_controls li a:visited {
+    display: block;
+    padding: 20px;
+    background: #fff;
+    border: solid 1px #f1f1f1;
+    color: #515A6B;
+    text-align: center;
+    font-size: 0.8em;
+    width: 100px;
+    height: 70px;
+    position: relative;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+div.contentBox ul.dashboard_controls li a:hover,
+div.contentBox ul.dashboard_controls li a:active {
+    background: #3D89B1;
+    color: #FFF;
+}
+
+div.contentBox ul.dashboard_controls li a i {
+    font-size: 3em;
+    display: block;
+    margin: 0 0 15px 0;
+}
+
+div.contentBox ul.dashboard_controls li a i:nth-of-type(2) {
+    position: absolute;
+    top: 35px;
+    right: 40px;
+}
+
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+.ui-tooltip {
+    font-size: 0.8em !important;
+    background: #757e93;
+    box-shadow: 0 2px 6px rgba(117,126,147,0.7) !important;
+    color: #FFF !important;
+    border: none !important;
+    top: 1px;
+}
+
+/*
+ *  App form Styles
+ */
+
+form.appForm {
+    width: 97.5%;
+}
+
+form.appForm table {
+    width: 100%;
+}
+
+form.appForm table tr th,
+form.appForm table tr td {
+    padding: 5px 0;
+}
+
+form.appForm p.error {
+    background: rgb(213, 2, 2);
+    padding: 3px 7px;
+    color: white;
+    display: inline-block;
+    margin: 0;
+    float:right;
+    clear:right;
+}
+
+form.appForm table tr td label {
+    font: 0.85em 'Neo Sans Arabic Medium' !important;
+    display: block;
+    margin: 15px 0 0 0;
+    color: #3D89B1;
+}
+
+form.appForm table tr:first-child td label {
+    margin: 0;
+}
+
+form.appForm input[type=text],
+form.appForm input[type=password],
+form.appForm input[type=email],
+form.appForm input[type=date],
+form.appForm input[type=number],
+form.appForm input[type=file],
+form.appForm textarea,
+form.appForm select {
+    border: solid 1px #EFEFEF;
+    border-radius: 2px;
+    width: 100%;
+    padding: 8px 10px;
+    font: 0.85em 'neosans';
+    text-align: right;
+}
+
+form.appForm input[type=text].ninty,
+form.appForm input[type=text].othertype,
+form.appForm input[type=text].othermachinetype,
+form.appForm input[type=text].othermanufacturetype {
+    width: 90%;
+}
+
+form.appForm input[type=text].ninty {
+    width: 97%;
+}
+
+form.appForm select {
+    width: 102%;
+    height: 35px;
+    background: white;
+}
+
+form.appForm input[type=text]:disabled,
+form.appForm input[type=password]:disabled,
+form.appForm input[type=email]:disabled,
+form.appForm input[type=date]:disabled,
+form.appForm input[type=number]:disabled,
+form.appForm input[type=file]:disabled,
+form.appForm textarea:disabled,
+form.appForm select:disabled {
+    color: #ccc;
+}
+
+form.appForm select[multiple] {
+    height: 100px;
+}
+
+form.appForm select#receiverId
+{
+    height: 150px;
+}
+
+form.appForm input[type=text]:focus,
+form.appForm input[type=password]:focus,
+form.appForm input[type=email]:focus,
+form.appForm input[type=date]:focus,
+form.appForm input[type=number]:focus,
+form.appForm input[type=file]:focus,
+form.appForm textarea:focus,
+form.appForm select:focus {
+    outline: solid 1px #3D89B1;
+}
+
+form.appForm input[type=number].small {
+    width: 10%;
+}
+
+form.appForm textarea {
+    height: 150px;
+    resize: vertical;
+}
+
+form.appForm input#instalment {
+    width: 20%;
+}
+
+form.appForm input#instalmentDesc {
+    width: 69%;
+}
+
+form.appForm input[type=submit] {
+    display: inline-block;
+    float: right;
+    background: #3D89B1;
+    color: #FFF;
+    border-radius: 2px;
+    padding: 10px 10px 7px 10px;
+    font-size: 0.8em;
+    margin: 10px 0 0 0;
+}
+
+form.appForm table tr td a#newInstalment {
+    font: 0.9em Arial;
+    color: #666;
+}
+
+form.appForm table tr td a#newInstalment i {
+    display: inline-block;
+    margin: 0 0 0 5px;
+}
+
+button.print {
+    display: block;
+    float: right;
+    background: #3D89B1;
+    color: #FFF;
+    border-radius: 2px;
+    padding: 10px 10px 7px 10px;
+    font-size: 0.8em;
+    margin: 10px 0 0 0;
+    border: solid 1px #3D89B1;
+    float: left;
+    font-family: 'NeoSansArabic';
+}
+
+form.appForm table tr td a.delInstalment {
+    display: inline-block;
+    margin: 0 10px 0 0;
+    color: #666;
+}
+
+form.appForm div.option {
+    display: inline-block;
+    width: 210px;
+    margin: 0 0 10px 10px;
+}
+
+form.appForm div.option label {
+    font: bold 0.85em 'neosansmedium';
+    display: block;
+    margin: 0 0 5px 0;
+}
+
+form.appForm div.option input[type=date]
+{
+    width: 190px;
+}
+
+form.appForm div.option select {
+    width: 212px;
+}
+
+table.data {
+    width: 100%;
+}
+
+table.data tr th,
+table.data tr td {
+    padding: 5px;
+    border: solid 1px #e4e4e4;
+}
+
+table.data tr th {
+    background: #f1f1f1;
+    text-align: right;
+}
+
+
+table.summary {
+    width: 100%;
+}
+
+table.summary tr th,
+table.summary tr td {
+    padding: 0 !important;
+    border: solid 1px #e4e4e4;
+}
+
+table.summary tr th {
+    background: #f1f1f1;
+    text-align: right;
+    padding: 0 10px 0 0 !important;
+}
+
+table.summary tr th label {
+    margin: 10px 0 0 0 !important;
+}
+
+table.summary tr td input[type=number] {
+    width: 80px;
+    border: solid 1px #999;
+}
+
+table.summary tr td select {
+    width: 200px;
+    border: solid 1px #999;
+}
+
+/*
+ * Notification boxes
+ */
+
+div.message {
+    padding: 10px 10px;
+    background: #EFEFEF;
+    border-radius: 2px;
+    position: relative;
+}
+
+div.message.error {
+    background: #900;
+}
+div.message.warning {
+    background: rgb(200, 164, 98);
+}
+div.message.info {
+    background: #9F2BA7;
+}
+
+    div.message p {
+        color: white;
+        font-size: 0.85em;
+    }
+
+    div.message a.close {
+        position: absolute;
+        color: white;
+        left: 10px;
+    }
+
+div.message.success {
+    background: rgb(115, 190, 115);
+}
+
+img.center
+{
+    display: block;
+    margin: 0 auto;
+}
+
+td.unread a {
+    color: #3D89B1;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+td.read a {
+    color: #666;
+}
+/*
+ * Data Table styles
+ */
+
+
+table.dataTable thead .sorting_asc,
+table.dataTable thead .sorting_desc,
+table.dataTable thead .sorting {
+    cursor: pointer;
+    *cursor: hand;
+}
+table.dataTable thead .sorting {
+    background: url("/img/sort_both.png") no-repeat center left;
+}
+table.dataTable thead .sorting_asc {
+    background: url("/img/sort_asc.png") no-repeat left 2px;
+}
+table.dataTable thead .sorting_desc {
+    background: url("/img/sort_desc.png") no-repeat left -5px;
+}
+table.dataTable thead .sorting_asc_disabled {
+    background: url("/img/sort_asc_disabled.png") no-repeat center left;
+}
+table.dataTable thead .sorting_desc_disabled {
+    background: url("/img/sort_desc_disabled.png") no-repeat center left;
+}
+
+
+
+/*
+ * Control feature layout
+ */
+.dataTables_wrapper {
+    position: relative;
+    clear: both;
+    *zoom: 1;
+    zoom: 1;
+}
+.dataTables_wrapper .dataTables_length {
+    float: left;
+    margin: 0 0 25px 10px;
+}
+.dataTables_wrapper .dataTables_length label,
+.dataTables_wrapper .dataTables_filter label {
+    font-size: 0.8em;
+}
+.dataTables_wrapper .dataTables_filter {
+    float: right;
+    text-align: right;
+    margin: 0 5px 25px 0;
+}
+.dataTables_wrapper .dataTables_filter input {
+    margin-right: 0.5em;
+    border-radius: 2px;
+    border: solid 1px #EFEFEF;
+    padding: 3px;
+    width: 350px;
+}
+.dataTables_wrapper .dataTables_info {
+    clear: both;
+    float: left;
+    padding-top: 0.755em;
+    margin: 5px 0 0 0;
+    font-size: 0.85em;
+}
+.dataTables_wrapper .dataTables_paginate {
+    float: right;
+    text-align: right;
+    padding-top: 0.25em;
+    margin: 5px 0 0 0;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    box-sizing: border-box;
+    display: inline-block;
+    padding: 2px 5px;
+    margin-left: 2px;
+    border-radius: 2px;
+    text-align: center;
+    text-decoration: none !important;
+    cursor: pointer;
+    *cursor: hand;
+    border: 1px solid transparent;
+    font-size: 0.85em;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+    color: #333333 !important;
+    border: 1px solid #cacaca;
+    background-color: #EFEFEF;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button.disabled, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active {
+    cursor: default;
+    color: #ccc !important;
+    border: 1px solid transparent;
+    background: transparent;
+    box-shadow: none;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    color: white !important;
+    background-color: #585858;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button:active {
+    outline: none;
+    background-color: #2b2b2b;
+    /* W3C */
+    box-shadow: inset 0 0 3px #111;
+}
+.dataTables_wrapper .dataTables_processing {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 40px;
+    margin-left: -50%;
+    margin-top: -25px;
+    padding-top: 20px;
+    text-align: center;
+    font-size: 1.2em;
+    background-color: white;
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(255, 255, 255, 0)), color-stop(25%, rgba(255, 255, 255, 0.9)), color-stop(75%, rgba(255, 255, 255, 0.9)), color-stop(100%, rgba(255, 255, 255, 0)));
+    /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.9) 25%, rgba(255, 255, 255, 0.9) 75%, rgba(255, 255, 255, 0) 100%);
+    /* Chrome10+,Safari5.1+ */
+    background: -moz-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.9) 25%, rgba(255, 255, 255, 0.9) 75%, rgba(255, 255, 255, 0) 100%);
+    /* FF3.6+ */
+    background: -ms-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.9) 25%, rgba(255, 255, 255, 0.9) 75%, rgba(255, 255, 255, 0) 100%);
+    /* IE10+ */
+    background: -o-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.9) 25%, rgba(255, 255, 255, 0.9) 75%, rgba(255, 255, 255, 0) 100%);
+    /* Opera 11.10+ */
+    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.9) 25%, rgba(255, 255, 255, 0.9) 75%, rgba(255, 255, 255, 0) 100%);
+    /* W3C */
+}
+.dataTables_wrapper .dataTables_length,
+.dataTables_wrapper .dataTables_filter,
+.dataTables_wrapper .dataTables_info,
+.dataTables_wrapper .dataTables_processing,
+.dataTables_wrapper .dataTables_paginate {
+    color: #666;
+    font-family: 'NeoSansArabic' !important;
+}
+.dataTables_wrapper .dataTables_scroll {
+    clear: both;
+}
+.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody {
+    *margin-top: -1px;
+    -webkit-overflow-scrolling: touch;
+}
+.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody th > div.dataTables_sizing,
+.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody td > div.dataTables_sizing {
+    height: 0;
+    overflow: hidden;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+.dataTables_wrapper.no-footer .dataTables_scrollBody {
+    border-bottom: 1px solid #111111;
+}
+.dataTables_wrapper.no-footer div.dataTables_scrollHead table,
+.dataTables_wrapper.no-footer div.dataTables_scrollBody table {
+    border-bottom: none;
+}
+.dataTables_wrapper:after {
+    visibility: hidden;
+    display: block;
+    content: "";
+    clear: both;
+    height: 0;
+}
+
+table.dataTable tr td:first-child a i {
+    display: inline-block;
+    margin: 0 0 0 5px;
+}
+
+@media screen and (max-width: 767px) {
+    .dataTables_wrapper .dataTables_info,
+    .dataTables_wrapper .dataTables_paginate {
+        float: none;
+        text-align: center;
+    }
+    .dataTables_wrapper .dataTables_paginate {
+        margin-top: 0.5em;
+    }
+}
+@media screen and (max-width: 640px) {
+    .dataTables_wrapper .dataTables_length,
+    .dataTables_wrapper .dataTables_filter {
+        float: none;
+        text-align: center;
+    }
+    .dataTables_wrapper .dataTables_filter {
+        margin-top: 0.5em;
+    }
+}
+
+a.contract:link,
+a.contract:visited {
+    color: #666 !important;
+    text-decoration: underline !important;
+}
+
+div.printable {
+    margin: 0 10px;
+}
+
+div.printable h1,
+div.printable h2,
+div.printable h3,
+div.printable h4,
+div.printable h5,
+div.printable h6,
+div.printable p,
+div.printable li
+{
+    line-height: 1.5;
+    font-family: 'Arial, Helvetica, sans-serif' !important;
+    color: #222;
+}
+
+div.printable h1 {
+    font-size: 1.8em !important;
+    margin: 0 0 10px 0;
+    font-weight: bold !important;
+}
+
+div.printable h2 {
+    font-size: 1.3em !important;
+    margin: 0 0 10px 0;
+    font-weight: bold !important;
+}
+
+div.printable p {
+    margin: 15px 0;
+    font-size: 16px;
+}
+
+div.printable ul {
+    list-style: inside disc;
+    margin: 15px;
+}
+
+div.printable ol {
+    list-style: inside decimal;
+    margin: 15px;
+}
+
+
+div.planContainer {
+
+}
+
+div.planContainer div.square {
+    width: 300px;
+    height: 160px;
+    background: #e4e4e4;
+    border: solid 1px #999;
+    text-align: center;
+    padding: 140px 0 0 0;
+    float: left;
+    margin: 50px 0 0 0;
+    position: relative;
+}
+
+div.planContainer div.square.right {
+    float: right;
+}
+
+div.planContainer div.square label {
+    width: 50px;
+    position: absolute;
+}
+
+div.planContainer div.square label#cabient_width {
+    top:10px;
+    left: 130px;
+}
+
+div.planContainer div.square label#cabient_height {
+    top:130px;
+    right: 10px;
+}
+
+div.planContainer div.square label#cabient_door_from_left {
+    bottom:10px;
+    left: 30px;
+}
+
+div.planContainer div.square label#cabient_door_width {
+    bottom:10px;
+    left: 135px;
+}
+
+div.planContainer div.square label#cabient_door_from_right {
+    bottom:10px;
+    right: 10px;
+}
+
+tr.hidden {
+    display: none;
+}
+
+a#detectLocation:link, a#detectLocation:visited {
+    font-size: 0.9em;
+    color: #666;
+}
+
+/*
+ * Image replacement
+ */
+
+.ir {
+    background-color: transparent;
+    border: 0;
+    overflow: hidden;
+    /* IE 6/7 fallback */
+    *text-indent: -9999px;
+}
+
+.ir:before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 150%;
+}
+
+/*
+ * Hide from both screenreaders and browsers: h5bp.com/u
+ */
+
+.hidden {
+    display: none !important;
+    visibility: hidden;
+}
+
+/*
+ * Hide only visually, but have it available for screenreaders: h5bp.com/v
+ */
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+/*
+ * Extends the .visuallyhidden class to allow the element to be focusable
+ * when navigated to via the keyboard: h5bp.com/p
+ */
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+}
+
+/*
+ * Hide visually and from screenreaders, but maintain layout
+ */
+
+.invisible {
+    visibility: hidden;
+}
+
+/*
+ * Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+
+.clearfix:before,
+.clearfix:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+/*
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+
+.clearfix {
+    *zoom: 1;
+}
+
+/* ==========================================================================
+   EXAMPLE Media Queries for Responsive Design.
+   These examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ========================================================================== */
+
+@media only screen and (min-width: 35em) {
+    /* Style adjustments for viewports that meet the condition */
+}
+
+@media print,
+       (-o-min-device-pixel-ratio: 5/4),
+       (-webkit-min-device-pixel-ratio: 1.25),
+       (min-resolution: 120dpi) {
+    /* Style adjustments for high resolution devices */
+}
+
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid required HTTP connection: h5bp.com/r
+   ========================================================================== */
+
+@media print {
+    * {
+        background: transparent !important;
+        color: #000 !important; /* Black prints faster: h5bp.com/s */
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    h1, h2, h3, h4, h5, h6, p, li, a, input, select,
+    textarea, legend, label, th, td, blockquote, q, span {
+        font-family: Arial, Helvetica, Sans-Serif !important;
+        color: #000;
+    }
+    
+    div.topHeader, div.headerNav, div.leftColumn, 
+    div.rightColumn footer,
+    div.rightColumn button.print {
+        display: none;
+    }
+    
+    div.content {
+        margin: 0;
+    }
+    
+    div.rightColumn {
+        width: 100%;
+        border: none;
+        margin: 0;
+    }
+
+    div.leftColumn {
+        width: 0px;
+    }
+    
+    form.appForm {
+        display: none;
+    }
+    
+    div.printable {
+        display: block;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+
+    /*
+     * Don't show links for images, or javascript/internal links
+     */
+
+    .ir a:after,
+    a[href^="javascript:"]:after,
+    a[href^="#"]:after {
+        content: "";
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    thead {
+        display: table-header-group; /* h5bp.com/t */
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    @page {
+        margin: 0.7cm;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    p {
+        font-size: 14px !important;
+    }
+
+    h1,
+    h2,
+    h3 {
+        page-break-after: avoid;
+        text-decoration: none;
+    }
+
+    h4 {
+        page-break-before: always !important;
+    }
+
+    div.break_top {
+        height: 150px;
+        clear: both;
+    }
+
+    div.break {
+        margin: 0 0 300px 0;
+    }
+
+    div.break2 {
+        margin: 0 0 400px 0;
+    }
+}
+
+@media screen and (device-width: 720px) {
+    div.leftColumn {
+        width: 55px;
+    }
+
+    div.rightColumn {
+        width: 664px;
+    }
+}
+
+/* Landscape */
+@media screen
+and (device-width: 360px)
+and (device-height: 640px)
+and (-webkit-device-pixel-ratio: 3)
+and (orientation: landscape) {
+    div.leftColumn {
+        width: 55px;
+    }
+
+    div.rightColumn {
+        width: 500px;
+    }
+
+    .dataTables_wrapper .dataTables_filter input {
+        width: 200px !important;
+    }
+
+    div.headerNav ul li ul {
+        width: 220px;
+    }
+
+    div.contentBox ul.dashboard_controls li a:link,
+    div.contentBox ul.dashboard_controls li a:visited {
+        padding: 20px;
+        font-size: 0.8em;
+        width: 100px;
+        height: 70px;
+    }
+
+    div.block.login {
+        width: 340px;
+    }
+}
+
+@media screen
+and (device-width: 360px)
+and (device-height: 640px)
+and (-webkit-device-pixel-ratio: 3)
+and (orientation: portrait) {
+    div.leftColumn {
+        width: 45px;
+    }
+
+    div.rightColumn {
+        width: 315px;
+    }
+
+    .dataTables_wrapper .dataTables_filter input {
+        width: 200px !important;
+    }
+
+    div.headerNav ul li ul {
+        width: 220px;
+    }
+
+    div.contentBox ul.dashboard_controls li a:link,
+    div.contentBox ul.dashboard_controls li a:visited {
+        padding: 10px;
+        font-size: 0.7em;
+        width: 80px;
+        height: 60px;
+    }
+
+    p.stat {
+        float: none;
+        margin: 10px 0 0 0;
+    }
+
+    div.statTable table th,
+    div.statTable table td {
+        display: none;
+    }
+
+    div.statTable table th:first-child,
+    div.statTable table td:first-child,
+    div.statTable table th:last-child,
+    div.statTable table td:last-child {
+        display: table-cell;
+    }
+}
+
+/* Portrait */
+@media only screen
+and (min-device-width: 320px)
+and (max-device-width: 568px)
+and (-webkit-min-device-pixel-ratio: 2)
+and (orientation: portrait) {
+    div.headerNav ul li a:link,
+    div.headerNav ul li a:visited {
+        display: block;
+        vertical-align: middle;
+        width: 20px;
+        font: 1.15em 'Arial';
+        border-left: 1px solid #4498C3;
+    }
+    div.leftColumn {
+        min-width: 45px;
+    }
+    div.box ul.mainNav li a:link,
+    div.box ul.mainNav li a:visited {
+        display: block;
+        padding: 8px 0px;
+        border-bottom: 1px solid #EFEFEF;
+        font-size: 1em;
+        position: relative;
+        color: #515A6B;
+        text-align: center;
+    }
+    div.rightColumn {
+        margin-right: 45px;
+    }
+    form.appForm  {
+        width: 90%;
+    }
+    div.headerNav ul li ul {
+        width: 200px;
+    }
+    div.headerNav ul li ul.user {
+        width: 140px;
+    }
+    div.block.login {
+        width: 300px;
+    }
+}
+
+/* Landscape */
+@media only screen
+and (min-device-width: 320px)
+and (max-device-width: 568px)
+and (-webkit-min-device-pixel-ratio: 2)
+and (orientation: landscape) {
+    div.headerNav ul li ul.user {
+        width: 140px;
+    }
+}
+
+span.note {
+    font-size: 0.75em;
+    color: #3D89B1;
+}
+
+span.note a:link,
+span.note a:visited {
+    text-decoration: underline;
+}
+
+a.mail:link, a.mail:visited {
+    color: #FFF;
+    border-radius: 3px;
+    background: #3D89B1;
+    padding: 5px;
+}
+
+form.appForm div.product span {
+    font-size: 0.85em;
+}
+
+form.appForm div.product span:first-child {
+    background: #e4e4e4;
+    border: solid 1px #e4e4e4;
+    width: 150px;
+    padding: 10px;
+    display: inline-block;
+    margin: 0 0 5px 0;
+}
+
+form.appForm div.product span:nth-child(2) {
+    width: 30px;
+    padding: 10px;
+}
+
+form.appForm div.product span:nth-child(2) input[type=number]{
+    padding: 10px;
+    border: solid 1px #e4e4e4;
+    width: 28px;
+}
+
+table tr td span.product {
+    display: inline-block;
+    background: #e1e1e1;
+    padding: 5px;
+    border-radius: 5px;
+    margin: 0 0 0 5px;
+}
