@@ -46,16 +46,19 @@ class MailController extends AbstractController
 
     public function newAction()
     {
+
+        $this->_data['allowedUsers'] = Models\UserModel::listUsers($this->session->u->id);
+
         if(isset($_POST['submit']) && isset($_POST['content'])) {
 
             if(!$this->requestHasValidToken($_POST['token'])) {
                 $this->routeTo('/mail');
             }
 
-            $receiversList = explode(';', $_POST['receiverId']);
+            $receiversList = $_POST['receiverId'];
 
-            if(false === $receiversList) {
-                $receiversList = $this->filterString($_POST['receiverId']);
+            if(empty($receiversList)) {
+                $this->routeTo('/mail');
             }
 
             $content = $this->filterString($_POST['content']);
@@ -65,7 +68,7 @@ class MailController extends AbstractController
             foreach($receiversList as $receiver) {
                 $mail = new Models\MailModel;
                 $mail->senderId = $this->session->u->id;
-                $receiverObj = Models\UserModel::getUserByUCName($this->filterString($receiver));
+                $receiverObj = Models\UserModel::getByPK($this->filterString($receiver));
                 if($receiverObj === false)  {
                     $failedMail = new Models\MailModel();
                     $failedMail->senderId = $this->session->u->id;
@@ -133,16 +136,19 @@ class MailController extends AbstractController
         $this->_data['mtitle'] = $mail->title;
         $this->_data['content'] = $mail->content;
 
+
+        $this->_data['allowedUsers'] = Models\UserModel::listUsers($this->session->u->id);
+
         if(isset($_POST['submit']) && isset($_POST['content'])) {
 
             if(!$this->requestHasValidToken($_POST['token'])) {
                 $this->routeTo('/mail');
             }
 
-            $receiversList = explode(';', $_POST['receiverId']);
+            $receiversList = $_POST['receiverId'];
 
-            if(false === $receiversList) {
-                $receiversList = $this->filterString($_POST['receiverId']);
+            if(empty($receiversList)) {
+                $this->routeTo('/mail');
             }
 
             $content = $this->filterString($_POST['content']);
@@ -152,7 +158,7 @@ class MailController extends AbstractController
             foreach($receiversList as $receiver) {
                 $mail = new Models\MailModel;
                 $mail->senderId = $this->session->u->id;
-                $receiverObj = Models\UserModel::getUserByUCName($this->filterString($receiver));
+                $receiverObj = Models\UserModel::getByPK($this->filterString($receiver));
                 if($receiverObj === false)  {
                     $failedMail = new Models\MailModel();
                     $failedMail->senderId = $this->session->u->id;

@@ -174,9 +174,9 @@ abstract class AbstractController
 
     protected function injectDataTable()
     {
-        $dataTableFile = ($_SESSION['lang'] == 'ar') ? 'jquery.datatables.rtl.js' : 'jquery.datatables.js';
+        $dataTableFile = 'jquery.datatables.js';
         $this->_template->injectFooterResource('datatables',
-            JS . $dataTableFile , 'menu');
+            JS . $dataTableFile , 'select');
     }
 
     /**
@@ -250,7 +250,7 @@ abstract class AbstractController
                     if(preg_match('/equals/', $role))
                         $role = 'equals';
                     $this->messenger->add(
-                        'text_error_' . $field . '_' . $role,
+                        'text_error_' . $field,
                         $this->lang->get('validation|error', 'text_error_' . $role),
                         Core\Messenger::STATUS_ERROR
                     );

@@ -27,7 +27,6 @@ $tempBlocks = new Template\TemplateBlocks(
             'jqueryui' => JS . 'jquery.ui.min.js',
             'plugins' => JS . 'plugins.js',
             'select' => JS . 'select.js',
-            'main' => JS . 'main.js',
-            'header' => JS . 'header.js'
+            'main' => JS . 'main.js'
         )
     ));

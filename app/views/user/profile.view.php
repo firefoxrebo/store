@@ -1,11 +1,10 @@
-<div class="app_content_wrapper">
-    <div class="window">
-        <a class="side_icon" href=""><i class="fa fa-user"></i></a>
-        <header>
-            <h1><i class="fa fa-user"></i> <?= $text_profile_header ?></h1>
-        </header>
-        <form class="appForm" method="post" enctype="multipart/form-data">
-            <div class="input_container">
+<div class="rightColumn">
+	<div class="block">
+		<header class="white">
+			<h2><?= $text_header ?></h2>
+		</header>
+		<div class="contentBox clearfix">
+            <form action="" class="appForm" method="post">
                 <table>
                     <tr>
                         <td>
@@ -14,7 +13,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <input required type="text" id="firstName" name="firstName" value="<?= (isset($_POST['firstName'])) ? $_POST['firstName'] : $employee->firstname ?>" />
+                            <input type="text" id="firstName" name="firstName" value="<?= (isset($_POST['firstName'])) ? $_POST['firstName'] : $employee->firstname ?>" />
                         </td>
                     </tr>
                     <tr>
@@ -34,7 +33,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <input required type="email" id="email" name="email" value="<?= (isset($_POST['email'])) ? $_POST['email'] : $employee->email ?>" />
+                            <input type="email" id="email" name="email" value="<?= (isset($_POST['email'])) ? $_POST['email'] : $employee->email ?>" />
                         </td>
                     </tr>
                     <tr>
@@ -64,7 +63,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <input required type="text" id="phone" name="phone" value="<?= (isset($_POST['phone'])) ? $_POST['phone'] : $employee->phone ?>" />
+                            <input type="text" id="phone" name="phone" value="<?= (isset($_POST['phone'])) ? $_POST['phone'] : $employee->phone ?>" />
                         </td>
                     </tr>
                     <tr>
@@ -74,16 +73,10 @@
                         </td>
                     </tr>
                 </table>
-            </div>
-            <div class="image">
-                <div class="profile_image_container">
-                    <label for="image"><?= $text_profile_image ?></label>
-                    <div class="profile_image" style="background: url(<?= $employee->image != '' ? '/store/images/' .$employee->image : '/img/default_profile.jpg' ?>);"></div>
-                </div>
-                <a href="javascript:;" class="file_dialog_switch"><?= $text_profile_choose_image ?></a>
-                <input type="file" name="image" id="image">
-                <span></span>
-            </div>
-        </form>
-    </div>
+            </form>
+		</div>
+		<footer>
+			<p><?= $text_footer ?></p>
+		</footer>
+	</div>
 </div>

@@ -29,7 +29,7 @@ define('IMG', '/img/');
 define('CSS', '/css/');
 
 // Storage Directories
-define('MAIN_STORAGE_FOLDER', APP_PATH . DS . '..' . DS . 'public' . DS . 'store');
+define('MAIN_STORAGE_FOLDER', APP_PATH . DS . '..' . DS . 'public' . DS . '_uploads');
 define('IMAGE_STORAGE_FOLDER', MAIN_STORAGE_FOLDER . DS . 'images' . DS);
 define('DOCS_STORAGE_FOLDER', MAIN_STORAGE_FOLDER . DS . 'documents' . DS);
 
@@ -37,7 +37,7 @@ define('DOCS_STORAGE_FOLDER', MAIN_STORAGE_FOLDER . DS . 'documents' . DS);
 define('APP_TITLE', 'المستودع الالكتروني');
 
 // Session Data
-define('SESSION_NAME', '_TOFOLA_LMS');
+define('SESSION_NAME', '_STORE_SESS_ID');
 define('SESSION_LIFE_TIME', 0);
 define('SESSION_SAVE_PATH', APP_PATH . DS . '..' . DS . 'sessions');
 

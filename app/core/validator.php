@@ -17,6 +17,9 @@ trait Validator
         if($role == 'num') {
             return $this->num($value);
         }
+        if($role == 'float') {
+            return $this->float($value);
+        }
         if($role == 'date') {
             return $this->date($value);
         }
@@ -94,6 +97,14 @@ trait Validator
         }
         return true;
     }
+
+    public function float($value)
+    {
+        if($value != '') {
+            return !preg_match('/[^0-9٠١٢٣٤٥٦٧٨٩.]/i', $value);
+        }
+        return true;
+    }
     
     public function strbetween($min, $max, $value)
     {
@@ -111,7 +122,9 @@ trait Validator
 
     public function intbetween($min, $max, $value)
     {
-        if($value >= $min && $value <= $max)
+        $value = (string) $value;
+        $numbersCount = strlen($value);
+        if($numbersCount >= $min && $numbersCount <= $max)
         {
             return true;
         }

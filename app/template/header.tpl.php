@@ -13,8 +13,8 @@
                                                     <strong><?= $header_account_label ?></strong>
 							<div class="pointer"></div>
 						</header>
-						<li><a href="/employee/profile"><?= $header_account_profile ?> <i class="fa fa-user"></i></a></li>
-                        <li><a href="/employee/password"><?= $header_account_password ?> <i class="fa fa-key"></i></a></li>
+						<li><a href="/user/profile"><?= $header_account_profile ?> <i class="fa fa-user"></i></a></li>
+                        <li><a href="/user/password"><?= $header_account_password ?> <i class="fa fa-key"></i></a></li>
                         <li><a href="/auth/logout"><?= $header_account_logout ?> <i class="fa fa-sign-out"></i></a></li>
 					</ul></li>
 				<li><a href="" class="notification"> <i class="fa fa-bell"></i>
@@ -43,4 +43,8 @@
 			</ul>
 		</div>
 	</header>
+    <div class="message message_<?= @$this->messenger->statusOf('message') ?>">
+        <a href="javascript:;" class="close"><i class="fa fa-times"></i></a>
+        <p><?= @$this->messenger->get('message') ?></p>
+    </div>
 	<div class="content clearfix">

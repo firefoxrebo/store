@@ -29,4 +29,14 @@ class ProfileModel extends AbstractModel
     );
 
     protected static $primaryKey = 'id';
+
+    /**
+     * @param $empId
+     *
+     * @return ProfileModel $profile
+     */
+    public static function loadProfile($empId)
+    {
+        return self::getOne('SELECT * FROM ' . self::$tableName . ' WHERE userid = ' . $empId);
+    }
 }

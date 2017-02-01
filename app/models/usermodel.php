@@ -20,8 +20,6 @@ class UserModel extends AbstractModel
 
     public $lastlogin;
 
-    public $canAddUser;
-
     public $permissions = array();
 
     protected static $tableName = 'app_users';
@@ -32,8 +30,7 @@ class UserModel extends AbstractModel
         'joined'            => self::DATA_TYPE_DATE,
         'privilege'         => self::DATA_TYPE_INT,
         'status'            => self::DATA_TYPE_INT,
-        'lastlogin'         => self::DATA_TYPE_DATE,
-        'canAddUser'        => self::DATA_TYPE_INT
+        'lastlogin'         => self::DATA_TYPE_DATE
     );
     protected static $primaryKey = 'id';
 
@@ -71,7 +68,7 @@ class UserModel extends AbstractModel
     public static function authenticate($username, $password)
     {
         $query = 'SELECT * FROM ' . self::$tableName . ' WHERE ucname= :ucname';
-        $foundUser = self::get($query, array('ucname' => array(self::DATA_TYPE_STR, $username)));
+        $foundUser = self::getOne($query, array('ucname' => array(self::DATA_TYPE_STR, $username)));
         if($foundUser !== false) {
             $hashedPassword = crypt($password, $foundUser->ucpwd);
             if($hashedPassword === $foundUser->ucpwd) {
@@ -91,7 +88,7 @@ class UserModel extends AbstractModel
     
     public static function listUsers($currentUserId)
     {
-        return self::get('SELECT au.*, (SELECT name FROM app_schools WHERE app_schools.id = au.schoolId) schoolName FROM ' . self::$tableName . ' as au WHERE au.id != ' . $currentUserId);
+        return self::get('SELECT *FROM ' . self::$tableName . ' WHERE id != ' . $currentUserId);
     }
     
     public function getPrivilege($dictionary)
@@ -102,19 +99,13 @@ class UserModel extends AbstractModel
                 $privilege = $dictionary['text_privilege_manager'];
                 break;
             case 2:
-                $privilege = $dictionary['text_privilege_school_manager'];
+                $privilege = $dictionary['text_privilege_accountant'];
                 break;
             case 3:
-                $privilege = $dictionary['text_privilege_school_supervisor'];
+                $privilege = $dictionary['text_privilege_auditor'];
                 break;
             case 4:
-                $privilege = $dictionary['text_privilege_school_teacher'];
-                break;
-            case 5:
-                $privilege = $dictionary['text_privilege_parent'];
-                break;
-            case 6:
-                $privilege = $dictionary['text_privilege_demo'];
+                $privilege = $dictionary['text_privilege_store'];
                 break;
         }
         return $privilege;
@@ -136,7 +127,7 @@ class UserModel extends AbstractModel
 
     public function getProfile()
     {
-        return ProfileModel::get('SELECT * FROM app_users_profile WHERE userid = ' . $this->id)->current();
+        return ProfileModel::getOne('SELECT * FROM app_users_profile WHERE userid = ' . $this->id);
     }
     
     public function __sleep() {
@@ -156,7 +147,7 @@ class UserModel extends AbstractModel
     public static function getUserByUCName($ucname)
     {
         $sql = 'SELECT * FROM ' . self::$tableName . " WHERE ucname = '" . $ucname . "'";
-        $user = self::get($sql);
-        return false !== $user ? $user->current() : false;
+        $user = self::getOne($sql);
+        return false !== $user ? $user : false;
     }
 }

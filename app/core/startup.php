@@ -33,7 +33,7 @@ final class Startup
 
         if(array_key_exists('u', $_SESSION)) {
             $userId = $session->u->id;
-            $total = Models\MailModel::get('SELECT count(*) as total FROM app_mail WHERE seen = 0 AND receiverId = ' . $userId);
+            $total = Models\MailModel::getOne('SELECT count(*) as total FROM app_mail WHERE seen = 0 AND receiverId = ' . $userId);
             $this->mailTotal = ($total !== false) ? $total->total : 0;
         }
     }

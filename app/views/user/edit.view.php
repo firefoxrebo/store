@@ -1,11 +1,10 @@
-<div class="app_content_wrapper">
-    <div class="window">
-        <a class="side_icon" href="/schools"><i class="fa fa-university"></i></a>
-        <header>
-            <h1><i class="fa fa-university"></i> <?= $text_header ?></h1>
-        </header>
-        <form class="appForm" method="post" enctype="multipart/form-data">
-            <div class="input_container full">
+<div class="rightColumn">
+	<div class="block">
+		<header class="white">
+			<h2><?= $text_header ?></h2>
+		</header>
+		<div class="contentBox clearfix">
+            <form action="" class="appForm" method="post">
                 <table>
                     <tr>
                         <td>
@@ -28,46 +27,57 @@
                     </tr>
                     <tr>
                         <td>
-                            <label for="ucname"><?= $text_ucname_label ?></label>
+                            <label for="lastName"><?= $text_lastname_label ?></label>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <input required type="text" id="ucname" name="ucname" value="<?= isset($_POST['ucname']) ? $_POST['ucname'] : $emp->ucname ?>" />
-                            <p class="error error_<?= @$this->messenger->statusOf('text_error_ucname_required') ?>">
-                                <?= @$this->messenger->get('text_error_ucname_required') ?>
-                            </p>
-                            <p class="error error_<?= @$this->messenger->statusOf('text_error_ucname_alphanumeric') ?>">
-                                <?= @$this->messenger->get('text_error_ucname_alphanumeric') ?>
-                            </p>
-                            <p class="error error_<?= @$this->messenger->statusOf('text_error_ucname_strbetween') ?>">
-                                <?= @$this->messenger->get('text_error_ucname_strbetween') ?>
-                            </p>
-                            <p class="error error_<?= @$this->messenger->statusOf('error_ucname_exists') ?>">
-                                <?= @$this->messenger->get('error_ucname_exists') ?>
-                            </p>
+                            <input type="text" id="lastName" name="lastName" value="<?= (isset($_POST['lastName'])) ? $_POST['lastName'] : $profile->lastname ?>" />
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <label for="email"><?= $text_email_label ?></label>
+                            <label for="dob"><?= $text_dob_label ?></label>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <input required type="email" id="email" name="email" value="<?= isset($_POST['email']) ? $_POST['email'] : $profile->email ?>" />
-                            <p class="error error_<?= @$this->messenger->statusOf('text_error_email_required') ?>">
-                                <?= @$this->messenger->get('text_error_email_required') ?>
-                            </p>
-                            <p class="error error_<?= @$this->messenger->statusOf('text_error_email_email') ?>">
-                                <?= @$this->messenger->get('text_error_email_email') ?>
-                            </p>
-                            <p class="error error_<?= @$this->messenger->statusOf('text_error_email_strbetween') ?>">
-                                <?= @$this->messenger->get('text_error_email_strbetween') ?>
-                            </p>
-                            <p class="error error_<?= @$this->messenger->statusOf('error_email_exists') ?>">
-                                <?= @$this->messenger->get('error_email_exists') ?>
-                            </p>
+                            <input type="date" id="dob" name="dob" value="<?= (isset($_POST['dob'])) ? $_POST['dob'] : $profile->dob ?>" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="address"><?= $text_address_label ?></label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" id="address" name="address" value="<?= (isset($_POST['address'])) ? $_POST['address'] : $profile->address ?>" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="phone"><?= $text_phone_label ?></label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input required type="text" id="phone" name="phone" value="<?= (isset($_POST['phone'])) ? $_POST['phone'] : $profile->phone ?>" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="privilege"><?= $text_privilege_label ?></label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <select name="privilege" id="privilege">
+                                <option value="1" <?php if($emp->privilege == 1) echo 'selected' ?>><?= $text_privilege_manager ?></option>
+                                <option value="2" <?php if($emp->privilege == 2) echo 'selected' ?>><?= $text_privilege_accountant ?></option>
+                                <option value="3" <?php if($emp->privilege == 3) echo 'selected' ?>><?= $text_privilege_auditor ?></option>
+                                <option value="4" <?php if($emp->privilege == 4) echo 'selected' ?>><?= $text_privilege_store ?></option>
+                            </select>
                         </td>
                     </tr>
                     <tr>
@@ -90,7 +100,10 @@
                         </td>
                     </tr>
                 </table>
-            </div>
-        </form>
-    </div>
+            </form>
+		</div>
+		<footer>
+			<p><?= $text_footer ?></p>
+		</footer>
+	</div>
 </div>

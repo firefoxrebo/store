@@ -155,7 +155,7 @@ h2.header {
 }
 
 a:link, a:visited {
-    color: #3D89B1;
+    color: #735602;
     text-decoration: none;
     outline: none;
 }
@@ -170,7 +170,7 @@ div.wrapper {
 
     header.topHeader {
         height: 45px;
-        background: #3D89B1;
+        background: #b1933d;
         box-shadow: 0 2px 4px rgba(0,0,0,.15);
     }
 
@@ -192,7 +192,7 @@ div.wrapper {
                     vertical-align: middle;
                     width: 30px;
                     font: 1.35em 'Arial';
-                    border-left: 1px solid #4498C3;
+                    border-left: 1px solid #a2842b;
                     height: 35px;
                     padding: 10px 12px 0 12px;
                     text-align: center;
@@ -202,14 +202,14 @@ div.wrapper {
 
                 div.headerNav ul li a:hover,
                 div.headerNav ul li a:active {
-                    background-color: #165F86;
+                    background-color: #735602;
                 }
 
                 div.headerNav ul li a.selected {
                     color: #FFF;
-                    border-left: 1px solid #4498C3;
-                    border-right: 1px solid #4498C3;
-                    background-color: #165F86;
+                    border-left: 1px solid #735602;
+                    border-right: 1px solid #735602;
+                    background-color: #806004;
                 }
 
                 div.headerNav > ul > li:nth-child(3),
@@ -348,7 +348,7 @@ div.wrapper {
                             padding: 0;
                             margin: 0;
                             font-size: 1em;
-                            color: #3D89B1;
+                            color: #735602;
                             border: none;
                         }
 
@@ -449,7 +449,7 @@ div.wrapper {
             }
 
                 div.block header {
-                    background: #3D89B1;
+                    background: #735602;
                     padding: 15px;
                     border-radius: 2px 2px 0 0;
                     position: relative;
@@ -526,7 +526,7 @@ div.wrapper {
                         min-width: 150px;
                         padding: 15px 10px 0 10px;
                         height: 33px;
-                        background: #3D89B1;
+                        background: #735602;
                         color: #fff;
                         -webkit-transition: all 0.3s ease-in-out;
                         -moz-transition: all 0.3s ease-in-out;
@@ -546,12 +546,12 @@ div.wrapper {
                     div.box > ul.mainNav > li a:focus,
                     div.box > ul.mainNav > li a.selected {
                         background: #f3f5f7;
-                        color: #3D89B1;
+                        color: #735602;
                     }
 
                     div.box ul.mainNav li:hover a {
-                        background: #3D89B1;
-                        color: #fff;
+                        background: #f1f1f1;
+                        color: #735602;
                     }
 
                     div.box ul.mainNav li a i {
@@ -747,7 +747,7 @@ div.wrapper {
         a.button:link, a.button:visited {
             display: inline-block;
             float: left;
-            background: #3D89B1;
+            background: #735602;
             color: #FFF;
             border-radius: 2px;
             padding: 10px 10px 7px 10px;
@@ -831,7 +831,7 @@ div.printable div.contractContent {
 }
 
 p.stat {
-    background: #3D89B1;
+    background: #735602;
     padding: 10px;
     color: #FFF;
     font-size: 0.8em;
@@ -878,6 +878,11 @@ div.trainingDashboard ul li span {
 	text-align: center;
 }
 
+div.contentBox ul.dashboard_controls {
+    width: 45%;
+    float: right;
+}
+
 div.contentBox ul.dashboard_controls li {
     float: right;
     margin: 12px;
@@ -904,7 +909,7 @@ div.contentBox ul.dashboard_controls li a:visited {
 
 div.contentBox ul.dashboard_controls li a:hover,
 div.contentBox ul.dashboard_controls li a:active {
-    background: #3D89B1;
+    background: #735602;
     color: #FFF;
 }
 
@@ -920,6 +925,93 @@ div.contentBox ul.dashboard_controls li a i:nth-of-type(2) {
     right: 40px;
 }
 
+div.contentBox div.quick_actions {
+    width: 55%;
+    float: right;
+    margin-top: 12px;
+}
+
+div.contentBox div.quick_actions ul.statistics,
+div.contentBox div.quick_actions ul.actions {
+    width: 48%;
+    float: right;
+    margin-right: 2%;
+}
+
+div.contentBox div.quick_actions ul.statistics h1,
+div.contentBox div.quick_actions ul.actions h1 {
+    padding: 10px 15px;
+    background: #f5f5f5;
+    border-bottom: solid 1px #ccc;
+    /*font-family: "Neo Sans Arabic Medium" !important;*/
+}
+
+div.contentBox div.quick_actions ul.statistics h1 > i,
+div.contentBox div.quick_actions ul.actions h1 > i {
+    margin-left: 5px;
+}
+
+div.contentBox div.quick_actions ul.actions li a:link,
+div.contentBox div.quick_actions ul.actions li a:visited {
+    padding: 10px;
+    display: block;
+    border-bottom: solid 1px #e1e1e1;
+    color: #666;
+    vertical-align: middle;
+    transition: all 0.3s ease-in-out;
+    font-size: 0.9em !important;
+}
+
+div.contentBox div.quick_actions ul.actions li a:hover,
+div.contentBox div.quick_actions ul.actions li a:active {
+    background: #735602 !important;
+    color: #FFF;
+    border-bottom: solid 1px #735602;
+}
+
+div.contentBox div.quick_actions ul.actions li:nth-of-type(2n) a {
+    background: #f9f9f9;
+}
+
+div.contentBox div.quick_actions ul.actions li a > i {
+    width: 20px;
+    height: 20px;
+    display: block;
+    float: right;
+    margin-left: 10px;
+    font-size: 1.3em;
+    text-align: center;
+}
+
+div.contentBox div.quick_actions ul.statistics div.stat_block {
+    box-sizing: border-box;
+    width: 50%;
+    float: right;
+    padding: 2.5%;
+    border-bottom: solid 1px #e4e4e4;
+    border-left: solid 1px #e4e4e4;
+}
+
+div.contentBox div.quick_actions ul.statistics div.stat_block:nth-of-type(2n) {
+    border-left: none;
+}
+
+div.contentBox div.quick_actions ul.statistics div.stat_block p {
+    margin: 0;
+    font-size: 0.85em;
+}
+
+div.contentBox div.quick_actions ul.statistics div.stat_block p span {
+    color: #a2842b;
+}
+
+
+div.contentBox div.quick_actions ul.statistics h1:last-of-type {
+    margin: 20px 0 0 0;
+}
+div.contentBox div.quick_actions ul.statistics div.chart {
+    clear: both;
+}
 
 /* ==========================================================================
    Helper classes
@@ -965,7 +1057,7 @@ form.appForm table tr td label {
     font: 0.85em 'Neo Sans Arabic Medium' !important;
     display: block;
     margin: 15px 0 0 0;
-    color: #3D89B1;
+    color: #735602;
 }
 
 form.appForm table tr:first-child td label {
@@ -1033,7 +1125,7 @@ form.appForm input[type=number]:focus,
 form.appForm input[type=file]:focus,
 form.appForm textarea:focus,
 form.appForm select:focus {
-    outline: solid 1px #3D89B1;
+    outline: solid 1px #735602;
 }
 
 form.appForm input[type=number].small {
@@ -1056,7 +1148,7 @@ form.appForm input#instalmentDesc {
 form.appForm input[type=submit] {
     display: inline-block;
     float: right;
-    background: #3D89B1;
+    background: #735602;
     color: #FFF;
     border-radius: 2px;
     padding: 10px 10px 7px 10px;
@@ -1077,13 +1169,13 @@ form.appForm table tr td a#newInstalment i {
 button.print {
     display: block;
     float: right;
-    background: #3D89B1;
+    background: #735602;
     color: #FFF;
     border-radius: 2px;
     padding: 10px 10px 7px 10px;
     font-size: 0.8em;
     margin: 10px 0 0 0;
-    border: solid 1px #3D89B1;
+    border: solid 1px #735602;
     float: left;
     font-family: 'NeoSansArabic';
 }
@@ -1204,13 +1296,189 @@ img.center
 }
 
 td.unread a {
-    color: #3D89B1;
+    color: #735602;
     font-weight: bold;
     text-decoration: underline;
 }
 
 td.read a {
     color: #666;
+}
+
+div.message {
+    padding: 10px;
+    background: #333;
+
+    display: none;
+}
+
+div.message.message_4 {
+    display: block;
+    background: #900;
+}
+div.message.message_2 {
+    display: block;
+    background: rgb(200, 164, 98);
+}
+div.message.message_3 {
+    display: block;
+    background: #1a86b5;
+}
+
+div.message.message_1 {
+    display: block;
+    background: rgb(115, 190, 115);
+}
+
+div.message p {
+    color: white;
+    font-size: 0.85em;
+}
+
+div.message a.close {
+    position: absolute;
+    color: white;
+    left: 10px;
+    top: 10px;
+}
+
+form.appForm p.error {
+    background: rgb(213, 2, 2);
+    padding: 3px 7px;
+    color: white;
+    display: none;
+    margin: 0;
+}
+
+form.appForm p.error_4 {
+    display: inline-block;
+}
+
+
+div.select_checkbox {
+    width: 300px;
+    padding: 8px 10px;
+    border-radius: 5px;
+    background: #f0f0f0 url("/img/select_open_arrow.png") no-repeat 10px 12px;
+    outline: none;
+    color: #9b9b9b;
+    line-height: 1em;
+    margin: 0 0 0 15px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    clear: both;
+    position: relative;
+}
+
+div.select_checkbox a:link,
+div.select_checkbox a:visited {
+    color: #9b9b9b;
+    display: block;
+}
+
+div.select_checkbox div.options {
+    height: 150px;
+    overflow: scroll;
+    position: absolute;
+    background: #f0f0f0;
+    border-top: none;
+    width: 298px;
+    left: 1px;
+    top: 33px;
+    padding: 0;
+    display: none;
+    box-shadow: 2px 0 5px -2px #ccc, -2px 0 5px -2px #ccc, 0 4px 2px -2px #ccc;
+}
+
+div.select_checkbox div.options label {
+    display: block;
+    padding: 10px;
+    margin: 0 !important;
+    border-bottom: solid 1px #e4e4e4;
+    background: #f9f9f9;
+}
+
+div.select_checkbox.company div.options label {
+    display: block !important;
+    float: none;
+    padding: 5px !important;
+    margin: 0 !important;
+    border-bottom: solid 1px #e4e4e4;
+    background: #f9f9f9;
+    font-size: 0.8em;
+    color: #333;
+    font-family: "Neo Sans Arabic Medium" !important;
+}
+
+div.select_checkbox div.options label:nth-child(2n) {
+    background: #f5f5f5;
+}
+
+div.select_checkbox div.options label input[type=checkbox] {
+    margin-left: 5px;
+}
+
+a.mail:link, a.mail:visited {
+    color: #FFF;
+    border-radius: 2px;
+    background: #735602;
+    padding: 10px;
+    margin-left: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+a.mail:hover, a.mail:active {
+    background: #fff;
+    color: #735602;
+    border-top: solid 2px #735602;
+    border-bottom: solid 2px #735602;
+}
+
+
+div.messageContainer div.message_tools {
+    float: left;
+    background: #f1f1f1;
+    border-radius: 5px;
+    margin: 0 0 20px 0;
+    height: 40px;
+    overflow: hidden;
+}
+
+div.messageContainer div.message_tools a:link,
+div.messageContainer div.message_tools a:visited {
+    display: block;
+    float: right;
+    border-left: solid 1px #e4e4e4;
+    width: 40px;
+    height: 30px;
+    padding-top: 12px;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+}
+
+div.messageContainer div.message_tools a:hover,
+div.messageContainer div.message_tools a:active {
+    background: #735602;
+    color: #FFF;
+    border-left: solid 1px #735602;
+}
+
+div.messageContainer div.message_tools a:last-child {
+    border-left: none;
+}
+
+div.messageContainer h3 {
+    float: right;
+    color: #735602;
+    font-family: "Neo Sans Arabic Medium" !important;
+}
+
+div.messageContainer div.message_body {
+    clear: left;
+    background: #f1f1f1;
+    padding: 10px;
+    border-radius: 5px;
 }
 /*
  * Data Table styles
@@ -1404,117 +1672,6 @@ table.dataTable tr td:first-child a i {
     .dataTables_wrapper .dataTables_filter {
         margin-top: 0.5em;
     }
-}
-
-a.contract:link,
-a.contract:visited {
-    color: #666 !important;
-    text-decoration: underline !important;
-}
-
-div.printable {
-    margin: 0 10px;
-}
-
-div.printable h1,
-div.printable h2,
-div.printable h3,
-div.printable h4,
-div.printable h5,
-div.printable h6,
-div.printable p,
-div.printable li
-{
-    line-height: 1.5;
-    font-family: 'Arial, Helvetica, sans-serif' !important;
-    color: #222;
-}
-
-div.printable h1 {
-    font-size: 1.8em !important;
-    margin: 0 0 10px 0;
-    font-weight: bold !important;
-}
-
-div.printable h2 {
-    font-size: 1.3em !important;
-    margin: 0 0 10px 0;
-    font-weight: bold !important;
-}
-
-div.printable p {
-    margin: 15px 0;
-    font-size: 16px;
-}
-
-div.printable ul {
-    list-style: inside disc;
-    margin: 15px;
-}
-
-div.printable ol {
-    list-style: inside decimal;
-    margin: 15px;
-}
-
-
-div.planContainer {
-
-}
-
-div.planContainer div.square {
-    width: 300px;
-    height: 160px;
-    background: #e4e4e4;
-    border: solid 1px #999;
-    text-align: center;
-    padding: 140px 0 0 0;
-    float: left;
-    margin: 50px 0 0 0;
-    position: relative;
-}
-
-div.planContainer div.square.right {
-    float: right;
-}
-
-div.planContainer div.square label {
-    width: 50px;
-    position: absolute;
-}
-
-div.planContainer div.square label#cabient_width {
-    top:10px;
-    left: 130px;
-}
-
-div.planContainer div.square label#cabient_height {
-    top:130px;
-    right: 10px;
-}
-
-div.planContainer div.square label#cabient_door_from_left {
-    bottom:10px;
-    left: 30px;
-}
-
-div.planContainer div.square label#cabient_door_width {
-    bottom:10px;
-    left: 135px;
-}
-
-div.planContainer div.square label#cabient_door_from_right {
-    bottom:10px;
-    right: 10px;
-}
-
-tr.hidden {
-    display: none;
-}
-
-a#detectLocation:link, a#detectLocation:visited {
-    font-size: 0.9em;
-    color: #666;
 }
 
 /*
@@ -1901,53 +2058,4 @@ and (orientation: landscape) {
     div.headerNav ul li ul.user {
         width: 140px;
     }
-}
-
-span.note {
-    font-size: 0.75em;
-    color: #3D89B1;
-}
-
-span.note a:link,
-span.note a:visited {
-    text-decoration: underline;
-}
-
-a.mail:link, a.mail:visited {
-    color: #FFF;
-    border-radius: 3px;
-    background: #3D89B1;
-    padding: 5px;
-}
-
-form.appForm div.product span {
-    font-size: 0.85em;
-}
-
-form.appForm div.product span:first-child {
-    background: #e4e4e4;
-    border: solid 1px #e4e4e4;
-    width: 150px;
-    padding: 10px;
-    display: inline-block;
-    margin: 0 0 5px 0;
-}
-
-form.appForm div.product span:nth-child(2) {
-    width: 30px;
-    padding: 10px;
-}
-
-form.appForm div.product span:nth-child(2) input[type=number]{
-    padding: 10px;
-    border: solid 1px #e4e4e4;
-    width: 28px;
-}
-
-table tr td span.product {
-    display: inline-block;
-    background: #e1e1e1;
-    padding: 5px;
-    border-radius: 5px;
-    margin: 0 0 0 5px;
 }

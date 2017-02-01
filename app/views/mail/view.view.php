@@ -1,11 +1,10 @@
-<div class="app_content_wrapper">
-    <div class="window">
-        <a class="side_icon" href="/mail/"><i class="fa fa-envelope"></i></a>
-        <header>
-            <h1><i class="fa fa-envelope"></i> <?= $text_header ?></h1>
+<div class="rightColumn">
+    <div class="block">
+        <header class="white">
+            <h2><?= $text_header ?></h2>
         </header>
-        <form class="appForm" method="post" enctype="multipart/form-data">
-            <div class="input_container full">
+        <div class="contentBox clearfix">
+            <form action="" class="appForm" method="post">
                 <div class="messageContainer clearfix">
                     <h3><?= $sender->ucname ?> : <?= $mail->title ?></h3>
                     <div class="message_tools">
@@ -18,7 +17,10 @@
                         <p><?= nl2br($mail->content) ?></p>
                     </div>
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
+        <footer>
+            <p><?= $text_footer ?></p>
+        </footer>
     </div>
 </div>

@@ -10,31 +10,12 @@ trait TemplateHelper
         if(!isset($cont) || empty($cont)) {
             $cont = 'index';
         }
-        
-        if($controller === strtolower($cont)) {
+
+        if(is_array($controller) && in_array(strtolower($cont), $controller)) {
+            return true;
+        } else if(strtolower($cont) === $controller) {
             return true;
         }
-        
-        return false;
-    }
-    
-    public function highlightSubMenu($item)
-    {
-        $url = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
-        @list($cont, $action) = explode('/', $url, 3);
-        if(!isset($action) || empty($action)) {
-            $action = 'default';
-        }
-        if(is_array($item)) {
-            if(in_array(strtolower($action), $item)) {
-                return true;
-            }
-        } else {
-            if($item === strtolower($action)) {
-                return true;
-            }
-        }
-        
         return false;
     }
     

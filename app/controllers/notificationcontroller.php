@@ -15,25 +15,20 @@ class NotificationController extends AbstractController
         $sql = 'SELECT * FROM app_notifications ';
         $sql .= 'WHERE empId = ' . $this->session->u->id . ' ';
         $sql .= 'ORDER BY id DESC';
-        $this->_data['notifications'] = Models\MailModel::query(
-            $sql, array(), '\Lilly\Models\NotificationModel'
-        );
+        $this->_data['notifications'] = Models\MailModel::get($sql);
 
         $this->lang->load('common|template');
         $this->lang->load('notification|common');
         $this->lang->load('notification|default');
 
-        $this->_template->injectFooterResource('datatables',
-            JS . 'jquery.datatables.js', 'jqueryui');
-        $this->_template->injectFooterResource('training', JS . 'training.js',
-            'datatables');
+        $this->injectDataTable();
         $this->_render();
     }
 
     public function viewAction()
     {
         $id = $this->_getParam(0, 'int');
-        $notification = Models\NotificationModel::getById($id);
+        $notification = Models\NotificationModel::getByPK($id);
 
         if($notification === false || $notification->empId != $this->session->u->id) {
             $this->routeTo('/notification');

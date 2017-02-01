@@ -1,11 +1,10 @@
-<div class="app_content_wrapper">
-    <div class="window">
-        <a class="side_icon" href="/schools"><i class="fa fa-university"></i></a>
-        <header>
-            <h1><i class="fa fa-university"></i> <?= $text_header ?></h1>
-        </header>
-        <form class="appForm" method="post" enctype="multipart/form-data">
-            <div class="input_container full">
+<div class="rightColumn">
+	<div class="block">
+		<header class="white">
+			<h2><?= $text_header ?></h2>
+		</header>
+		<div class="contentBox clearfix">
+            <form action="" class="appForm" method="post">
                 <table>
                     <tr>
                         <td>
@@ -24,6 +23,46 @@
                             <p class="error error_<?= @$this->messenger->statusOf('text_error_firstName_strbetween') ?>">
                                 <?= @$this->messenger->get('text_error_firstName_strbetween') ?>
                             </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="lastName"><?= $text_lastname_label ?></label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" id="lastName" name="lastName" value="<?= (isset($_POST['lastName'])) ? $_POST['lastName'] : '' ?>" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="dob"><?= $text_dob_label ?></label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="date" id="dob" name="dob" value="<?= (isset($_POST['dob'])) ? $_POST['dob'] : '' ?>" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="address"><?= $text_address_label ?></label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" id="address" name="address" value="<?= (isset($_POST['address'])) ? $_POST['address'] : '' ?>" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="phone"><?= $text_phone_label ?></label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input required type="text" id="phone" name="phone" value="<?= (isset($_POST['phone'])) ? $_POST['phone'] : '' ?>" />
                         </td>
                     </tr>
                     <tr>
@@ -114,12 +153,30 @@
                     </tr>
                     <tr>
                         <td>
+                            <label for="privilege"><?= $text_privilege_label ?></label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <select name="privilege" id="privilege">
+                                <option value="1" <?= @$_POST['privilege'] == 1 ? 'selected' : '' ?>><?= $text_privilege_manager ?></option>
+                                <option value="2" <?= @$_POST['privilege'] == 2 ? 'selected' : '' ?>><?= $text_privilege_accountant ?></option>
+                                <option value="3" <?= @$_POST['privilege'] == 3 ? 'selected' : '' ?>><?= $text_privilege_auditor ?></option>
+                                <option value="4" <?= @$_POST['privilege'] == 4 ? 'selected' : '' ?>><?= $text_privilege_store ?></option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
                             <input type="hidden" name="token" value="<?= $this->_registry->session->CSRFToken ?>">
                             <input type="submit" name="submit" value="<?= $text_submit ?>" />
                         </td>
                     </tr>
                 </table>
-            </div>
-        </form>
-    </div>
+            </form>
+		</div>
+		<footer>
+			<p><?= $text_footer ?></p>
+		</footer>
+	</div>
 </div>

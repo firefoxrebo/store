@@ -17,8 +17,6 @@ class AbstractModel
     const VALIDATE_DATE_NUMERIC = '^\d{6,8}$';
     const DEFAULT_MYSQL_DATE = '1970-01-01';
 
-    private static $db;
-
     private function prepareValues(\PDOStatement &$stmt)
     {
         foreach (static::$tableSchema as $columnName => $type) {
@@ -45,8 +43,20 @@ class AbstractModel
         $sql = 'INSERT INTO ' . static::$tableName . ' SET ' . $this->buildNameParametersSQL();
         $stmt = DatabaseHandler::factory()->prepare($sql);
         $this->prepareValues($stmt);
-        if($stmt->execute()) {
-            $this->{static::$primaryKey} = DatabaseHandler::factory()->lastInsertId();
+        if($stmt->execute() === true) {
+            $this->{static::$primaryKey} = DatabaseHandler::factory()->getLastInsertedId();
+            return true;
+        }
+        return false;
+    }
+
+    public function replace()
+    {
+        $sql = 'REPLACE INTO ' . static::$tableName . ' SET ' . $this->buildNameParametersSQL();
+        $stmt = DatabaseHandler::factory()->prepare($sql);
+        $this->prepareValues($stmt);
+        if($stmt->execute() === true) {
+            $this->{static::$primaryKey} = DatabaseHandler::factory()->getLastInsertedId();
             return true;
         }
         return false;
@@ -82,10 +92,7 @@ class AbstractModel
         } else {
             $results = $stmt->fetchAll(\PDO::FETCH_CLASS, get_called_class());
         }
-        if (is_array($results) && !empty($results) && count($results) == 1) {
-            $results = new \ArrayIterator($results);
-            return $results->current();
-        } elseif (is_array($results) && !empty($results) && count($results) > 1) {
+        if (is_array($results) && !empty($results)) {
             return new \ArrayIterator($results);
         }
         return false;
@@ -96,7 +103,11 @@ class AbstractModel
         $sql = 'SELECT * FROM ' . static::$tableName . '  WHERE ' . static::$primaryKey . ' = "' . $pk . '"';
         $stmt = DatabaseHandler::factory()->prepare($sql);
         if ($stmt->execute() === true) {
-            $obj = $stmt->fetchAll(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, get_called_class(), array_keys(static::$tableSchema));
+            if(method_exists(get_called_class(), '__construct')) {
+                $obj = $stmt->fetchAll(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, get_called_class(), array_keys(static::$tableSchema));
+            } else {
+                $obj = $stmt->fetchAll(\PDO::FETCH_CLASS, get_called_class());
+            }
             return array_shift($obj);
         }
         return false;
@@ -127,12 +138,69 @@ class AbstractModel
         } else {
             $results = $stmt->fetchAll(\PDO::FETCH_CLASS, get_called_class());
         }
-        if (is_array($results) && !empty($results) && count($results) == 1) {
-            $results = new \ArrayIterator($results);
-            return $results->current();
-        } elseif (is_array($results) && !empty($results) && count($results) > 1) {
+        if (is_array($results) && !empty($results)) {
             return new \ArrayIterator($results);
         }
         return false;
+    }
+
+    public static function getOne($sql, $options = array())
+    {
+        $result = static::get($sql, $options);
+        return false !== $result ? $result->current() : false;
+    }
+
+    public static function getBy($columnName, $value, $type)
+    {
+        $stmt = DatabaseHandler::factory()->prepare(
+            'SELECT * FROM ' . static::$tableName . ' WHERE ' . $columnName . ' = :' . $columnName
+        );
+        if ($type == 4) {
+            $sanitizedValue = filter_var($value, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
+            $stmt->bindValue(":{$columnName}", $sanitizedValue);
+        } elseif ($type == 5) {
+            if (!preg_match(self::VALIDATE_DATE_STRING, $value) || !preg_match(self::VALIDATE_DATE_NUMERIC, $value)) {
+                $stmt->bindValue(":{$columnName}", self::DEFAULT_MYSQL_DATE);
+            }
+            $stmt->bindValue(":{$columnName}", $value);
+        } else {
+            $stmt->bindValue(":{$columnName}", $value, $type);
+        }
+        $stmt->execute();
+        if(method_exists(get_called_class(), '__construct')) {
+            $results = $stmt->fetchAll(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, get_called_class(), array_keys(static::$tableSchema));
+        } else {
+            $results = $stmt->fetchAll(\PDO::FETCH_CLASS, get_called_class());
+        }
+        if (is_array($results) && !empty($results)) {
+            return new \ArrayIterator($results);
+        }
+        return false;
+    }
+
+    public static function count()
+    {
+        $callingClass = get_called_class();
+        $sql = 'SELECT COUNT(*) c FROM ' . $callingClass::$tableName;
+        $stmt = DatabaseHandler::factory()->prepare($sql);
+        $stmt->execute();
+        $count = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        if(!empty($count)) {
+            return $count[0]['c'];
+        }
+        return 0;
+    }
+
+    public static function sum($expression)
+    {
+        $callingClass = get_called_class();
+        $sql = 'SELECT SUM(' . $expression . ') s FROM ' . $callingClass::$tableName;
+        $stmt = DatabaseHandler::factory()->prepare($sql);
+        $stmt->execute();
+        $count = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        if(!empty($count)) {
+            return $count[0]['s'];
+        }
+        return 0;
     }
 }

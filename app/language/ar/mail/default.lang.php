@@ -1,7 +1,8 @@
 <?php
 
 $_['title'] = 'الرسائل - صندوق الوارد';
-$_['text_header'] = 'صندوق الوارد';
+$_['text_main_header'] = 'صندوق الوارد';
+$_['text_main_footer'] = 'صندوق الوارد';
 $_['text_title'] = 'عنوان البريد';
 $_['text_sender'] = 'الراسل';
 $_['text_datetime'] = 'الوقت';

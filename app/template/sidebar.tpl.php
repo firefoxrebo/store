@@ -18,17 +18,24 @@
                 </li>
 
                 <li>
-                    <a href="/store" class="<?php if($this->highlightMenu('store')) echo 'selected'; ?>">
+                    <a href="/store" class="<?php if($this->highlightMenu(array('store', 'categories', 'products', 'supplierstransactions', 'clientstransactions'))) echo 'selected'; ?>">
                         <i class="material-icons">store</i>
                     </a>
                     <span><?= $text_ctrl_store; ?></span>
                 </li>
 
                 <li>
-                    <a href="/accounting" class="<?php if($this->highlightMenu('accounting')) echo 'selected'; ?>">
+                    <a href="/expenses" class="<?php if($this->highlightMenu('expenses')) echo 'selected'; ?>">
                         <i class="fa fa-money"></i>
                     </a>
-                    <span><?= $text_ctrl_accounting; ?></span>
+                    <span><?= $text_ctrl_expenses; ?></span>
+                </li>
+
+                <li>
+                    <a href="/banktransactions" class="<?php if($this->highlightMenu('banktransactions')) echo 'selected'; ?>">
+                        <i class="fa fa-bank"></i>
+                    </a>
+                    <span><?= $text_ctrl_bank; ?></span>
                 </li>
 
                 <li>
@@ -39,7 +46,7 @@
                 </li>
 
                 <li>
-                    <a href="/employee" class="<?php if($this->highlightMenu('employee')) echo 'selected'; ?>">
+                    <a href="/user" class="<?php if($this->highlightMenu('user')) echo 'selected'; ?>">
                         <i class="fa fa-user"></i>
                     </a>
                     <span><?= $text_ctrl_employees; ?></span>

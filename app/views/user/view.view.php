@@ -1,11 +1,10 @@
-<div class="app_content_wrapper">
-    <div class="window">
-        <a class="side_icon" href="/user"><i class="fa fa-user"></i></a>
-        <header>
-            <h1><i class="fa fa-user"></i> <?= $text_profile_header ?></h1>
-        </header>
-        <form class="appForm" method="post" enctype="multipart/form-data">
-            <div class="input_container">
+<div class="rightColumn">
+	<div class="block">
+		<header class="white">
+			<h2><?= $text_header ?></h2>
+		</header>
+		<div class="contentBox clearfix">
+            <form action="" class="appForm" method="post">
                 <table>
                     <tr>
                         <td>
@@ -14,7 +13,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <?= $employee->firstname ?>
+                            <p><?= $employee->firstname; ?></p>
                         </td>
                     </tr>
                     <tr>
@@ -24,7 +23,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <?= $employee->lastname ?>
+                            <p><?= $employee->lastname; ?></p>
                         </td>
                     </tr>
                     <tr>
@@ -34,7 +33,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <?= $employee->email ?>
+                            <p><?= $employee->email; ?></p>
                         </td>
                     </tr>
                     <tr>
@@ -44,7 +43,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <?= $employee->dob ?>
+                            <p><?= (new DateTime($employee->dob))->format('d/m/Y'); ?></p>
                         </td>
                     </tr>
                     <tr>
@@ -52,34 +51,22 @@
                             <label for="address"><?= $text_address_label ?></label>
                         </td>
                     </tr>
-                    <tr>
-                        <td>
-                            <?= $employee->address ?>
-                        </td>
-                    </tr>
+                    <td>
+                        <p><?= $employee->address; ?></p>
+                    </td>
                     <tr>
                         <td>
                             <label for="phone"><?= $text_phone_label ?></label>
                         </td>
                     </tr>
-                    <tr>
-                        <td>
-                            <?= $employee->phone ?>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-
-                        </td>
-                    </tr>
+                    <td>
+                        <p><?= $employee->phone; ?></p>
+                    </td>
                 </table>
-            </div>
-            <div class="image">
-                <div class="profile_image_container">
-                    <label for="image"><?= $text_profile_image ?></label>
-                    <div class="profile_image" style="background: url(<?= $employee->image != '' ? '/store/images/' .$employee->image : '/img/default_profile.jpg' ?>);"></div>
-                </div>
-            </div>
-        </form>
-    </div>
+            </form>
+		</div>
+		<footer>
+			<p><?= $text_footer ?></p>
+		</footer>
+	</div>
 </div>

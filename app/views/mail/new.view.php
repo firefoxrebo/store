@@ -1,11 +1,10 @@
-<div class="app_content_wrapper">
-    <div class="window">
-        <a class="side_icon" href="/mail"><i class="fa fa-envelope"></i></a>
-        <header>
-            <h1><i class="fa fa-envelope"></i> <?= $text_header ?></h1>
-        </header>
-        <form class="appForm" method="post" enctype="multipart/form-data">
-            <div class="input_container full">
+<div class="rightColumn">
+	<div class="block">
+		<header class="white">
+			<h2><?= $text_header ?></h2>
+		</header>
+		<div class="contentBox clearfix">
+            <form action="" class="appForm" method="post">
                 <table>
                     <tr>
                         <td>
@@ -20,12 +19,18 @@
                     <tr>
                         <td>
                             <label for="receiverId"><?= $text_name_label ?></label>
-                            <p><?= $text_name_guide ?></p>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <input type="text" id="receiverId" name="receiverId" />
+                            <div class="select_checkbox">
+                                <a href="javascript:;" class="switch">اختار المرسل اليه</a>
+                                <div class="options">
+                                    <?php if (false !== $allowedUsers): foreach ($allowedUsers as $auser): ?>
+                                        <label><input name="receiverId[]" id="receiverId" type="checkbox" value="<?= $auser->id ?>"><?= $auser->ucname ?></label>
+                                    <?php endforeach; endif; ?>
+                                </div>
+                            </div>
                         </td>
                     </tr>
                     <tr>
@@ -45,7 +50,10 @@
                         </td>
                     </tr>
                 </table>
-            </div>
-        </form>
-    </div>
+            </form>
+		</div>
+		<footer>
+			<p><?= $text_footer ?></p>
+		</footer>
+	</div>
 </div>
