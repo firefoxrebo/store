@@ -983,6 +983,7 @@ div.contentBox div.quick_actions ul.actions li a > i {
     text-align: center;
 }
 
+div.contentBox div.quick_actions ul.actions div.stat_block,
 div.contentBox div.quick_actions ul.statistics div.stat_block {
     box-sizing: border-box;
     width: 50%;
@@ -992,25 +993,47 @@ div.contentBox div.quick_actions ul.statistics div.stat_block {
     border-left: solid 1px #e4e4e4;
 }
 
+div.contentBox div.quick_actions ul.actions div.stat_block:nth-of-type(2n),
 div.contentBox div.quick_actions ul.statistics div.stat_block:nth-of-type(2n) {
     border-left: none;
 }
 
-div.contentBox div.quick_actions ul.statistics div.stat_block p {
+div.contentBox div.quick_actions ul.actions div.stat_block_full p,
+div.contentBox div.quick_actions ul.statistics div.stat_block_full p,
+div.contentBox div.quick_actions ul.statistics div.stat_block p,
+div.contentBox div.quick_actions ul.actions div.stat_block p {
     margin: 0;
     font-size: 0.85em;
 }
 
-div.contentBox div.quick_actions ul.statistics div.stat_block p span {
+div.contentBox div.quick_actions ul.actions div.stat_block p span,
+div.contentBox div.quick_actions ul.statistics div.stat_block p span,
+div.contentBox div.quick_actions ul.actions div.stat_block_full p span,
+div.contentBox div.quick_actions ul.statistics div.stat_block_full p span {
     color: #a2842b;
 }
 
+div.contentBox div.quick_actions ul.actions div.stat_block_full,
+div.contentBox div.quick_actions ul.statistics div.stat_block_full {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 2.5%;
+    border-bottom: solid 1px #e4e4e4;
+}
 
+
+div.contentBox div.quick_actions ul.actions h1:last-of-type:not(:only-of-type),
 div.contentBox div.quick_actions ul.statistics h1:last-of-type {
     margin: 20px 0 0 0;
 }
 div.contentBox div.quick_actions ul.statistics div.chart {
     clear: both;
+}
+
+div.contentBox img.notfound {
+    display: block;
+    width: 30%;
+    margin: 100px auto;
 }
 
 /* ==========================================================================

@@ -1,9 +1,15 @@
-<div class="app_content_wrapper">
-	<div class="window">
-		<a class="side_icon" href="/"><i class="fa fa-home"></i></a>
-		<header class="purple">
-			<h1><i class="fa fa-times"></i> <?= $text_not_found ?></h1>
-		</header>
-
-	</div>
+<div class="rightColumn">
+    <div class="block">
+        <header class="white">
+            <h2><?= $text_main_header ?></h2>
+        </header>
+        <div class="contentBox clearfix">
+            <img class="notfound" src="/img/404.png" alt="not found">
+        </div>
+        <footer>
+            <p>
+                <?= $text_main_footer ?>
+            </p>
+        </footer>
+    </div>
 </div>

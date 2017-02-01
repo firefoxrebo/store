@@ -13,7 +13,13 @@ class ProductsController extends AbstractController
     protected $dataSchema = [
         'name'  => 'required|alphanumeric|strbetween(3,50)',
         'categoryId'  => 'required|num',
-        'unit'  => 'required|alpha',
+        'unit'  => 'required|num',
+        'price'  => 'required|float'
+    ];
+
+    protected $editDataSchema = [
+        'name'  => 'required|alphanumeric|strbetween(3,50)',
+        'unit'  => 'required|num',
         'price'  => 'required|float'
     ];
 
@@ -33,6 +39,8 @@ class ProductsController extends AbstractController
         $this->lang->load('common|template');
         $this->lang->load('products|add');
         $this->lang->load('products|label');
+
+        $this->_data['categories'] = Models\CategoryModel::getAll();
 
         if(isset($_POST['submit'])) {
             if($this->isValidRequest()) {
@@ -73,7 +81,7 @@ class ProductsController extends AbstractController
         $this->lang->load('products|label');
 
         if(isset($_POST['submit'])) {
-            if($this->isValidRequest()) {
+            if($this->isValidRequest($this->editDataSchema)) {
                 if(!$this->requestHasValidToken($_POST['token'])) {
                     $this->routeTo('/products');
                 }

@@ -24,6 +24,15 @@ class ProductModel extends AbstractModel
         'created' => self::DATA_TYPE_DATE
     );
 
+    public static function getAll()
+    {
+        $categories = self::get(
+            'SELECT ap.*, apc.name category FROM ' . self::$tableName . ' ap INNER JOIN 
+            app_products_categories apc ON apc.id = ap.categoryId'
+        );
+        return $categories;
+    }
+
     public function hasRelatedTransactions()
     {
 

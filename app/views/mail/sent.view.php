@@ -1,14 +1,4 @@
 <div class="rightColumn">
-    <?php
-        if(isset($_SESSION['message'])) {
-    ?>
-    <div class="message <?= $this->switchTo($_SESSION['message'][1]) ?>">
-        <a href="" class="close"><i class="fa fa-times"></i></a>
-        <p><?= $_SESSION['message'][0]; unset($_SESSION['message']) ?></p>
-    </div>
-    <?php 
-        }
-    ?>
     <div class="block">
         <header class="white">
             <h2><?= $text_header ?></h2>

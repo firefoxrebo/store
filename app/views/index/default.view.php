@@ -1,14 +1,4 @@
 <div class="rightColumn">
-    <?php
-    if(isset($_SESSION['message'])) {
-        ?>
-        <div class="message <?= $this->switchTo($_SESSION['message'][1]) ?>">
-            <a href="" class="close"><i class="fa fa-times"></i></a>
-            <p><?= $_SESSION['message'][0]; unset($_SESSION['message']) ?></p>
-        </div>
-    <?php
-    }
-    ?>
     <div class="block">
         <header class="white">
             <h2><?= $text_header ?></h2>
@@ -36,7 +26,7 @@
                             <p><?= $text_clients_count; ?> : <span><?= $clients ?></span></p>
                         </div>
                         <div class="stat_block">
-                            <p><?= $text_products_count; ?> : <span>0</span></p>
+                            <p><?= $text_products_count; ?> : <span><?= $products ?></span></p>
                         </div>
                         <div class="stat_block">
                             <p><?= $text_expense_count; ?> : <span>0</span></p>
@@ -45,7 +35,7 @@
                             <p><?= $text_in_count; ?> : <span>0</span></p>
                         </div>
                         <div class="stat_block">
-                            <p><?= $text_invoice_count; ?> : <span>0</span></p>
+                            <p><?= $text_out_count; ?> : <span>0</span></p>
                         </div>
                     </li>
                     <h1><i class="fa fa-bar-chart"></i> <?= $text_chart_data ?> - <?= date('Y') ?></h1>
@@ -59,7 +49,7 @@
                     <li><a href="/clients/add"><i class="material-icons">contacts</i> <?= $text_shortcut_clients_add ?></a></li>
                     <li><a href="/products/add"><i class="fa fa-tag"></i> <?= $text_shortcut_products_add ?></a></li>
                     <li><a href="/banktransactions/add"><i class="fa fa-bank"></i> <?= $text_shortcut_bank_transaction ?></a></li>
-                    <li><a href="/supplierstransactions/add"><i class="fa fa-gift"></i> <?= $text_shortcut_supplyـtransaction ?></a></li>
+                    <li><a href="/purchases/add"><i class="fa fa-gift"></i> <?= $text_shortcut_supplyـtransaction ?></a></li>
                     <li><a href="/clientstransactions/add"><i class="fa fa-shopping-cart"></i> <?= $text_shortcut_store_invoice ?></a></li>
                     <li><a href="/expense/add"><i class="fa fa-money"></i> <?= $text_shortcut_expense_add ?></a></li>
                     <li><a href="/mail/new"><i class="fa fa-envelope"></i> <?= $text_shortcut_mail_add ?></a></li>

@@ -25,9 +25,9 @@
                             ?>
                             <tr>
                                 <td><?= $product->name; ?></td>
-                                <td><?= $product->product; ?></td>
-                                <td><?= $product->unit; ?></td>
-                                <td><?= $product->price; ?></td>
+                                <td><?= $product->category; ?></td>
+                                <td><?= ${'text_unit_' . $product->unit}; ?></td>
+                                <td><?= round($product->price,2); ?></td>
                                 <td><?= $product->created; ?></td>
                                 <td>
                                     <a title="<?= $text_table_control_edit ?>" href="/products/edit/<?= $product->id ?>" ><i class="fa fa-edit"></i></a>
