@@ -919,6 +919,12 @@ div.contentBox ul.dashboard_controls li a i {
     margin: 0 0 15px 0;
 }
 
+div.contentBox ul.dashboard_controls li a img {
+    font-size: 3em;
+    display: block;
+    margin: 0 auto 15px auto;
+}
+
 div.contentBox ul.dashboard_controls li a i:nth-of-type(2) {
     position: absolute;
     top: 35px;
@@ -1036,6 +1042,30 @@ div.contentBox img.notfound {
     margin: 100px auto;
 }
 
+a.addProduct {
+    display: block;
+    margin-bottom: 10px;
+}
+
+div.products_list {
+    border: dashed 1px #e4e4e4;
+    background: #f1f1f1;
+    padding: 10px;
+    float: right;
+    min-width: 300px;
+}
+
+div.products_list table tr td p {
+    display: inline-block;
+    margin-left: 30px;
+    width: 200px;
+}
+
+div.products_list table tr td input[type=number] {
+    width: 100px;
+    margin-left: 10px;
+}
+
 /* ==========================================================================
    Helper classes
    ========================================================================== */
@@ -1081,6 +1111,13 @@ form.appForm table tr td label {
     display: block;
     margin: 15px 0 0 0;
     color: #735602;
+}
+
+form.appForm table tr td label.sameRow {
+    display: inline-block;
+    margin: 0 0 0 15px;
+    font: 0.85em 'NeoSansArabic' !important;
+    color: #666;
 }
 
 form.appForm table tr:first-child td label {

@@ -14,6 +14,8 @@
                         <th><?= $text_table_supplier; ?></th>
                         <th><?= $text_table_created; ?></th>
                         <th><?= $text_table_approved; ?></th>
+                        <th><?= $text_table_products_total ?></th>
+                        <th><?= $text_table_total ?></th>
                         <th><?= $text_table_payment_type; ?></th>
                         <th><?= $text_table_paid; ?></th>
                         <th style="width: 100px"><?= $text_table_control; ?></th>
@@ -26,15 +28,17 @@
                             ?>
                             <tr>
                                 <td>SI<?= (new DateTime($invoice->created))->format('Y') ?><?= $invoice->id; ?></td>
-                                <td><?= $invoice->city; ?></td>
                                 <td><?= $invoice->supplier; ?></td>
-                                <td><?= $invoice->created; ?></td>
+                                <td><?= (new DateTime($invoice->created))->format('Y-m-d H:i'); ?></td>
                                 <td><?= ${'text_approved_' . $invoice->approved}; ?></td>
+                                <td><?= $invoice->ptotal ?></td>
+                                <td><?= round($invoice->total, 2) ?></td>
                                 <td><?= ${'text_payment_type_' . $invoice->paymentType}; ?></td>
                                 <td><?= ${'text_paid_' . $invoice->paid}; ?></td>
-                                <td><a title="<?= $text_table_control_view ?>" href="/purchases/view/<?= $invoice->id ?>"><i class="fa fa-eye"></i></a><a
-                                        href="/purchases/edit/<?= $invoice->id ?>" title="<?= $text_table_control_edit ?>"><i class="fa fa-edit"></i></a><a
-                                        title="<?= $text_table_control_delete ?>" href="/purchases/delete/<?= $invoice->id ?>/?token=<?= $this->session->CSRFToken ?>" onclick="if(!confirm('<?= $text_table_control_delete_confirm ?>')) return false;"><i class="fa fa-trash"></i></a>
+                                <td>
+                                    <a title="<?= $text_table_control_view ?>" href="/purchases/view/<?= $invoice->id ?>"><i class="fa fa-eye"></i></a>
+                                    <a title="<?= $text_table_control_edit ?>" href="/purchases/edit/<?= $invoice->id ?>"><i class="fa fa-edit"></i></a>
+                                    <a title="<?= $text_table_control_delete ?>" href="/purchases/delete/<?= $invoice->id ?>/?token=<?= $this->session->CSRFToken ?>" onclick="if(!confirm('<?= $text_table_control_delete_confirm ?>')) return false;"><i class="fa fa-trash"></i></a>
                                 </td>
                             </tr>
                             <?php

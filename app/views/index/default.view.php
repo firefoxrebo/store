@@ -9,7 +9,7 @@
                 <li><a href="/clients" class="<?php if($this->highlightMenu('clients')) echo 'selected'; ?>"><i class="material-icons">contacts</i><?= $text_ctrl_clients; ?></a></li>
                 <li><a href="/store" class="<?php if($this->highlightMenu('store')) echo 'selected'; ?>"><i class="material-icons">store</i><?= $text_ctrl_store; ?></a></li>
                 <li><a href="/expenses" class="<?php if($this->highlightMenu('expenses')) echo 'selected'; ?>"><i class="fa fa-money"></i><?= $text_ctrl_expenses; ?></a></li>
-                <li><a href="/banktransactions" class="<?php if($this->highlightMenu('banktransactions')) echo 'selected'; ?>"><i class="fa fa-bank"></i><?= $text_ctrl_bank; ?></a></li>
+                <li><a href="/safetybox" class="<?php if($this->highlightMenu('safetybox')) echo 'selected'; ?>"><i class="fa fa-inbox"></i><?= $text_ctrl_bank; ?></a></li>
                 <li><a href="/report" class="<?php if($this->highlightMenu('report')) echo 'selected'; ?>"><i class="fa fa-bar-chart"></i><?= $text_ctrl_stats ?></a></li>
                 <li><a href="/user" class="<?php if($this->highlightMenu('user')) echo 'selected'; ?>"><i class="fa fa-user"></i><?= $text_ctrl_employees; ?></a></li>
                 <li><a href="/mail" class="<?php if($this->highlightMenu('mail')) echo 'selected'; ?>"><i class="fa fa-envelope"></i><?= $text_ctrl_mail ?> (<?= $this->_registry->startup->mailTotal; ?>)</a></li>

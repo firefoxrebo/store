@@ -31,7 +31,10 @@ class SupplierInvoiceModel extends AbstractModel
     public static function getAll()
     {
         $invoices = self::get(
-            'SELECT asi.*, `as`.name supplier FROM ' . self::$tableName . ' asi INNER JOIN 
+            'SELECT asi.*, `as`.name supplier, 
+            (SELECT SUM(price * quantity) FROM app_suppliers_invoices_details WHERE invoiceId = asi.id) total,
+            (SELECT COUNT(*) FROM app_suppliers_invoices_details WHERE invoiceId = asi.id) ptotal
+            FROM ' . self::$tableName . ' asi INNER JOIN 
             app_suppliers `as` ON `as`.id = asi.supplierId'
         );
         return $invoices;

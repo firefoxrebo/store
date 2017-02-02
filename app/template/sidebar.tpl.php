@@ -32,8 +32,8 @@
                 </li>
 
                 <li>
-                    <a href="/banktransactions" class="<?php if($this->highlightMenu('banktransactions')) echo 'selected'; ?>">
-                        <i class="fa fa-bank"></i>
+                    <a href="/safetybox" class="<?php if($this->highlightMenu('safetybox')) echo 'selected'; ?>">
+                        <i class="fa fa-inbox"></i>
                     </a>
                     <span><?= $text_ctrl_bank; ?></span>
                 </li>

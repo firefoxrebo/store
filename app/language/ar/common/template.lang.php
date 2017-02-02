@@ -26,7 +26,7 @@ $_['text_ctrl_purchases']           = 'المشتريات';
 $_['text_ctrl_sales']               = 'المبيعات';
 $_['text_ctrl_fill_store']          = 'توريد للمخزن';
 $_['text_ctrl_expenses']            = 'المصروفات';
-$_['text_ctrl_bank']                = 'الحساب البنكي';
+$_['text_ctrl_bank']                = 'الخزنة';
 
 $_['text_quick_statistics']         = 'احصائيات عامة / شهرية';
 $_['text_low_ammo']                 = 'اصناف دون الحد الادنى';

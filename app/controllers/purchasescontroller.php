@@ -11,7 +11,8 @@ class PurchasesController extends AbstractController
     use Core\Helper;
 
     protected $dataSchema = [
-        'name'              => 'required|alphanumeric|strbetween(3,50)'
+        'supplierId'        => 'required|num',
+        'paymentType'       => 'required|num'
     ];
 
     public function defaultAction()
@@ -32,16 +33,34 @@ class PurchasesController extends AbstractController
         $this->lang->load('purchases|label');
 
         $this->_data['suppliers'] = Models\SupplierModel::getAll();
+        $this->_data['products'] = Models\ProductModel::getAll();
 
         if(isset($_POST['submit'])) {
             if($this->isValidRequest()) {
                 if(!$this->requestHasValidToken($_POST['token'])) {
                     $this->routeTo('/purchases');
                 }
-                $category = new Models\CategoryModel();
-                $category->name = $this->filterString($_POST['name']);
-                $category->created = date('Y-m-d');
-                if($category->save()) {
+                $invoice = new Models\SupplierInvoiceModel();
+                $invoice->supplierId = $this->filterInt($_POST['supplierId']);
+                $invoice->paymentType = $this->filterInt($_POST['paymentType']);
+                $invoice->approved = 0;
+                $invoice->createdBy = $this->session->u->id;
+                $invoice->paid = 0;
+                $invoice->created = date('Y-m-d H:i:s');
+
+                $productsIds = $this->filterStringArray($_POST['productv']);
+                $productsPrices = $this->filterStringArray($_POST['productp']);
+                $productsQuantities = $this->filterStringArray($_POST['productq']);
+
+                if($invoice->save()) {
+                    for ( $i = 0, $ii = count($productsIds); $i < $ii; $i++ ) {
+                        $details = new Models\SupplierInvoiceDetailsModel();
+                        $details->invoiceId = $invoice->id;
+                        $details->productId = $productsIds[$i];
+                        $details->quantity = $productsQuantities[$i];
+                        $details->price = $productsPrices[$i];
+                        $details->save();
+                    }
                     $this->messenger->add(
                         'message',
                         $this->lang->get('purchases|common', 'add_success')
@@ -93,15 +112,15 @@ class PurchasesController extends AbstractController
             $this->routeTo('/purchases');
         }
         $id = $this->_getParam(0, 'int');
-        $category = Models\CategoryModel::getByPK($id);
-        if($category === false) {
+        $invoice = Models\SupplierInvoiceModel::getByPK($id);
+        if($invoice === false) {
             $this->routeTo('/purchases');
         }
-//        if($client->hasTransactions()) {
-//            $this->session->message = array($this->lang->get('purchases|common', 'has_transactions'), APP_INFO);
-//            $this->routeTo('/purchases');
-//        }
-        if($category->delete()){
+        $details = Models\SupplierInvoiceDetailsModel::getByInvoiceId($invoice);
+        foreach ($details as $detail) {
+            $detail->delete();
+        }
+        if($invoice->delete()){
             $this->messenger->add(
                 'message',
                 $this->lang->get('purchases|common', 'delete_success')

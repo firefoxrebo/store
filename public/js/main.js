@@ -97,3 +97,43 @@ $(document).click(function()
 {
     $('div.select_checkbox div.options').slideUp();
 });
+
+// $('select').selectivity();
+
+$('a.addProduct').click(function(evt)
+{
+    evt.preventDefault();
+    if($('select[name=products]').val() != '') {
+        $('div.products_list table').append('<tr><td>' +
+            '' +
+            '<p>' + $('select[name=products] option:selected').text() + '</p></td>' +
+            '<td><input name="productq[]" type="number" required min="1"></td>' +
+            '<td><input name="productp[]" type="number" required min="' +
+            $('select[name=products] option:selected').attr('data-price') + '" value="' +
+            $('select[name=products] option:selected').attr('data-price') +
+            '">' +
+            '<input name="productv[]" type="hidden" value="' +
+            $('select[name=products]').val() + '"> <a onclick="removeProduct(this);" href="javascript:void(0);"><i class="fa fa-times"></i></a>' +
+            '</td></tr>'
+        );
+        $('select[name=products] option:selected').remove();
+    }
+});
+
+function removeProduct(t)
+{
+    var parent = $(t).parent().parent();
+    var price = $(parent).find('input[name*=productp]').val();
+    var text = $(parent).find('p').text();
+    var value = $(parent).find('input[name*=productv]').val();
+    $('select[name=products]').append('<option data-price="' + price + '" value="' + value + '">' + text + '</option>');
+    $(parent).remove();
+}
+
+$('input.purchaseBtn').click(function(evt)
+{
+    if(document.querySelector('input[name*=product]') == null) {
+        evt.preventDefault();
+        alert('عفوا يجب عليك اختيار اصناف من القائمة و اضافتها للفاتورة')
+    }
+});
