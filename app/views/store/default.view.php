@@ -4,11 +4,11 @@
             <h2><?= $text_header ?></h2>
         </header>
         <div class="contentBox clearfix">
-            <ul class="dashboard_controls">
+            <ul class="dashboard_controls clearfix">
                 <li><a href="/categories" class="<?php if($this->highlightMenu('categories')) echo 'selected'; ?>"><i class="fa fa-archive"></i><?= $text_ctrl_categories; ?></a></li>
                 <li><a href="/products" class="<?php if($this->highlightMenu('products')) echo 'selected'; ?>"><i class="fa fa-tag"></i><?= $text_ctrl_products; ?></a></li>
                 <li><a href="/purchases" class="<?php if($this->highlightMenu('purchases')) echo 'selected'; ?>"><i class="fa fa-gift"></i><?= $text_ctrl_purchases; ?></a></li>
-                <li><a href="/clientstransactions" class="<?php if($this->highlightMenu('clientstransactions')) echo 'selected'; ?>"><i class="fa fa-shopping-cart"></i><?= $text_ctrl_sales; ?></a></li>
+                <li><a href="/sales" class="<?php if($this->highlightMenu('sales')) echo 'selected'; ?>"><i class="fa fa-shopping-cart"></i><?= $text_ctrl_sales; ?></a></li>
             </ul>
             <div class="quick_actions">
                 <ul class="statistics">
@@ -49,7 +49,7 @@
                     <li><a href="/categories/add"><i class="fa fa-archive"></i> <?= $text_shortcut_categories_add ?></a></li>
                     <li><a href="/products/add"><i class="fa fa-tag"></i> <?= $text_shortcut_products_add ?></a></li>
                     <li><a href="/purchases/add"><i class="fa fa-gift"></i> <?= $text_shortcut_supplyـtransaction ?></a></li>
-                    <li><a href="/clientstransactions/add"><i class="fa fa-shopping-cart"></i> <?= $text_shortcut_store_invoice ?></a></li>
+                    <li><a href="/sales/add"><i class="fa fa-shopping-cart"></i> <?= $text_shortcut_store_invoice ?></a></li>
                     <li><a href="/mail/new"><i class="fa fa-envelope"></i> <?= $text_shortcut_mail_add ?></a></li>
                 </ul>
             </div>

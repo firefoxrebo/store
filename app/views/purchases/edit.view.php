@@ -4,99 +4,88 @@
             <h2><?= $text_header ?></h2>
         </header>
         <div class="contentBox clearfix">
-            <form action="" class="appForm" method="post">
+            <form id="client_form" action="" class="appForm" method="post">
                 <table>
                     <tr>
+                        <td><label for="paymentType"><?= $text_payment_type_label ?></label></td>
+                    </tr>
+                    <tr>
                         <td>
-                            <label for="name"><?= $text_name_label ?></label>
+                            <label class="sameRow"><input required type="radio" name="paymentType" <?= (@$_POST['paymentType'] == 1 || $invoice->paymentType == 1 ? 'checked' : '') ?> value="1"> <?= $text_payment_type_1 ?></label>
+                            <label class="sameRow"><input required type="radio" name="paymentType" <?= (@$_POST['paymentType'] == 2 || $invoice->paymentType == 2 ? 'checked' : '') ?> value="2"> <?= $text_payment_type_2 ?></label>
+                            <label class="sameRow"><input required type="radio" name="paymentType" <?= (@$_POST['paymentType'] == 3 || $invoice->paymentType == 3 ? 'checked' : '') ?> value="3"> <?= $text_payment_type_3 ?></label>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <input maxlength="50" required type="text" id="name" name="name" value="<?= (isset($_POST['name'])) ? $_POST['name'] : $client->name; ?>"/>
-                            <p class="error error_<?= @$this->messenger->statusOf('text_error_name') ?>">
-                                <?= @$this->messenger->get('text_error_name') ?>
-                            </p>
+                            <label for="supplierId"><?= $text_name_label ?></label>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <label for="city"><?= $text_city_label ?></label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <select required name="city" id="city">
-                                <?php
-                                foreach ($cities as $key => $city) {
-                                    ?>
-                                    <option
-                                        value="<?= $key ?>" <?php if ((isset($_POST['city']) && $_POST['city'] == $key) || $client->city == $key) echo 'selected' ?>><?= $city ?></option>
-                                    <?php
-                                }
-                                ?>
+                            <select required name="supplierId" id="supplierId">
+                                <option value=""><?= $text_select ?></option>
+                                <?php if (false !== $suppliers): foreach ($suppliers as $supplier): ?>
+                                    <option <?= (@$_POST['supplierId'] == $supplier->id || $invoice->supplierId == $supplier->id) ? 'selected' : '' ?> value="<?= $supplier->id ?>"><?= $supplier->name ?></option>
+                                <?php endforeach;endif; ?>
                             </select>
-                            <p class="error error_<?= @$this->messenger->statusOf('text_error_city') ?>">
-                                <?= @$this->messenger->get('text_error_city') ?>
+                            <p class="error error_<?= @$this->messenger->statusOf('text_error_supplierId') ?>">
+                                <?= @$this->messenger->get('text_error_supplierId') ?>
                             </p>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <label for="mobile"><?= $text_mobile_label ?></label>
+                            <label for="products"><?= $text_products_label ?></label>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <input maxlength="12" required type="text" id="mobile" name="mobile" value="<?= (isset($_POST['mobile'])) ? $_POST['mobile'] : $client->mobile ?>"/>
-                            <p class="error error_<?= @$this->messenger->statusOf('text_error_mobile') ?>">
-                                <?= @$this->messenger->get('text_error_mobile') ?>
-                            </p>
+                            <select name="products" id="products">
+                                <option value=""><?= $text_select ?></option>
+                                <?php if (false !== $products): foreach ($products as $product): ?>
+                                    <option data-price="<?= $product->price ?>" <?= (@$_POST['products'] == $product->id) ? 'selected' : '' ?> value="<?= $product->id ?>"><?= $product->name ?></option>
+                                <?php endforeach;endif; ?>
+                            </select>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <label for="email"><?= $text_email_label ?></label>
+
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <input type="email" id="email" name="email" value="<?= (isset($_POST['email'])) ? $_POST['email'] : $client->email ?>"/>
-                            <p class="error error_<?= @$this->messenger->statusOf('text_error_email') ?>">
-                                <?= @$this->messenger->get('text_error_email') ?>
-                            </p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label for="address"><?= $text_address_label ?></label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input required type="text" id="address" name="address" value="<?= (isset($_POST['address'])) ? $_POST['address'] : $client->address ?>"/>
-                            <p class="error error_<?= @$this->messenger->statusOf('text_error_address') ?>">
-                                <?= @$this->messenger->get('text_error_address') ?>
-                            </p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label for="subscribed"><?= $text_subscribed_label ?></label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input required type="date" id="subscribed" name="subscribed" value="<?= (isset($_POST['subscribed'])) ? $_POST['subscribed'] : $client->subscribed ?>" max="<?= date('Y-m-d') ?>"/>
-                            <p class="error error_<?= @$this->messenger->statusOf('text_error_subscribed') ?>">
-                                <?= @$this->messenger->get('text_error_subscribed') ?>
-                            </p>
+                            <a class="addProduct" href="javascript:void(0);"><i class="fa fa-plus"></i> <?= $text_add_product ?></a>
+                            <div class="products_list">
+                                <table>
+                                    <tr>
+                                        <td><?= $text_product_name ?></td>
+                                        <td><?= $text_product_quantity ?></td>
+                                        <td><?= $text_product_price ?></td>
+                                    </tr>
+                                    <?php if (false !== $details): foreach ($details as $detail): ?>
+                                        <tr>
+                                            <td>
+                                                <p><?= $detail->name ?></p>
+                                            </td>
+                                            <td>
+                                                <input name="productq[]" type="number" required min="1" value="<?= $detail->quantity ?>">
+                                            </td>
+                                            <td>
+                                                <input name="productp[]" type="number" required min="<?= $detail->price ?>" value="<?= $detail->price ?>">
+                                                <input name="productv[]" type="hidden" value="<?= $detail->productId ?>"> <a onclick="removeProduct(this);" href="javascript:void(0);"><i class="fa fa-times"></i></a>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach;endif; ?>
+                                </table>
+                            </div>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <input type="hidden" name="token" value="<?= $this->_registry->session->CSRFToken ?>">
-                            <input type="submit" name="submit" value="<?= $text_submit ?>"/>
+                            <input class="purchaseBtn" type="submit" name="submit" value="<?= $text_submit ?>"/>
                         </td>
                     </tr>
                 </table>

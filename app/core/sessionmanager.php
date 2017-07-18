@@ -12,8 +12,7 @@ class SessionManager extends \SessionHandler
     private $sessionDomain = '.shipdev.com';
     private $sessionSavePath = SESSION_SAVE_PATH;
 
-    private $sessionCipherAlgo = MCRYPT_BLOWFISH;
-    private $sessionCipherMode = MCRYPT_MODE_ECB;
+    private $sessionCipherAlgo = 'AES-128-ECB';
     private $sessionCipherKey = 'WYCRYPT0K3Y@2016';
 
     private $ttl = 30;
@@ -39,7 +38,7 @@ class SessionManager extends \SessionHandler
             $this->sessionHTTPOnly
         );
 
-        session_set_save_handler($this, true);
+//        session_set_save_handler($this, true);
     }
 
     public function __get($key) {
@@ -70,12 +69,12 @@ class SessionManager extends \SessionHandler
 
     public function read($id)
     {
-        return @mcrypt_decrypt($this->sessionCipherAlgo, $this->sessionCipherKey, parent::read($id), $this->sessionCipherMode);
+        return openssl_decrypt(parent::read($id), $this->sessionCipherAlgo, $this->sessionCipherKey);
     }
 
     public function write($id, $data)
     {
-        return parent::write($id, @mcrypt_encrypt($this->sessionCipherAlgo, $this->sessionCipherKey, $data, $this->sessionCipherMode));
+        return parent::write($id, openssl_encrypt($data, $this->sessionCipherAlgo, $this->sessionCipherKey));
     }
 
     public function start()

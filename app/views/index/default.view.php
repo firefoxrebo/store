@@ -4,7 +4,7 @@
             <h2><?= $text_header ?></h2>
         </header>
         <div class="contentBox clearfix">
-            <ul class="dashboard_controls">
+            <ul class="dashboard_controls clearfix">
                 <li><a href="/suppliers" class="<?php if($this->highlightMenu('suppliers')) echo 'selected'; ?>"><i class="material-icons">group</i><?= $text_ctrl_suppliers; ?></a></li>
                 <li><a href="/clients" class="<?php if($this->highlightMenu('clients')) echo 'selected'; ?>"><i class="material-icons">contacts</i><?= $text_ctrl_clients; ?></a></li>
                 <li><a href="/store" class="<?php if($this->highlightMenu('store')) echo 'selected'; ?>"><i class="material-icons">store</i><?= $text_ctrl_store; ?></a></li>

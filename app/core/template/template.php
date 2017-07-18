@@ -147,6 +147,71 @@ final class Template
         require TEMPLATE_PATH . DS . TemplateBlocks::TEMPLATE_FOOTER;
     }
 
+    private function parser($file, $data)
+    {
+        extract($data);
+
+        $fileContent = file_get_contents($file);
+
+        // foreach extraction
+        $foreachPattern = '/@@foreach (\w+) as (\w+)\n+(.+?)@@endforeach/ims';
+        preg_match_all($foreachPattern, $fileContent, $match);
+        if(!empty($match[0])) {
+            $i = -1;
+            $fileContent = preg_replace_callback($foreachPattern, function()
+            {
+                global $i;
+                return '[[' . ++$i . ']]';
+            }, $fileContent);
+
+            $newContent = [];
+
+            for ($i = 0, $ii = count($match[0]); $i < $ii; $i++ ) {
+
+                $key = array_shift($match[1]);
+                $value = array_shift($match[2]);
+                $content = trim(array_shift($match[3]));
+
+                if(isset(${$key}) && !empty(${$key})) {
+                    foreach (${$key} as ${$value}) {
+                        $contentCopyToModify = $content;
+                        preg_match_all("/@@$value->(\w+)/i", $content, $m);
+                        foreach($m[1] as $prop) {
+                            $contentCopyToModify = preg_replace("/@@$value->$prop/i", ${$value}->$prop, $contentCopyToModify);
+                        }
+                        $newContent[$i][] = $contentCopyToModify;
+                    }
+                }
+            }
+
+            $modifiedNewContent = [];
+            if(!empty($newContent)) {
+                // TODO:: implement a callback
+                foreach ($newContent as $newContentItem) {
+                    $modifiedNewContent[] = implode($newContentItem);
+                }
+
+                foreach ($modifiedNewContent as $key => $modifiedNewContentItem) {
+                    $fileContent = preg_replace('/\[\[' . ($key + 1) . '\]\]/i', $modifiedNewContentItem, $fileContent);
+                }
+            } else {
+                $fileContent = preg_replace('/\[\[\d+\]\]/i', '', $fileContent);
+            }
+        }
+
+        // Variables extract
+        $variablesPattern = '/@@(\w+)/ims';
+        if(preg_match($variablesPattern, $fileContent, $variables)) {
+            preg_match_all($variablesPattern, $fileContent, $variables);
+            $variables = $variables[1];
+            foreach ($variables as $variable) {
+                $fileContent = preg_replace("/@@$variable/i", ${$variable}, $fileContent);
+            }
+        }
+
+        return $fileContent;
+
+    }
     /**
      * Injects template building blocks according to its
      * precedence.
@@ -161,7 +226,8 @@ final class Template
         foreach ($templateBlocks as $blockName => $block) {
             if ($blockName == ':view') {
                 if(file_exists($this->_view)) {
-                    require $this->_view;
+//                    echo $this->parser($this->_view, ($this->_data + $this->_lang));
+                    require_once $this->_view;
                 } else {
                     require VIEWS_PATH . DS . 'notfound' . DS . 'default.view.php';
                 }

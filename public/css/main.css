@@ -1983,41 +1983,6 @@ table.dataTable tr td:first-child a i {
     }
 }
 
-/* Landscape */
-@media screen
-and (device-width: 360px)
-and (device-height: 640px)
-and (-webkit-device-pixel-ratio: 3)
-and (orientation: landscape) {
-    div.leftColumn {
-        width: 55px;
-    }
-
-    div.rightColumn {
-        width: 500px;
-    }
-
-    .dataTables_wrapper .dataTables_filter input {
-        width: 200px !important;
-    }
-
-    div.headerNav ul li ul {
-        width: 220px;
-    }
-
-    div.contentBox ul.dashboard_controls li a:link,
-    div.contentBox ul.dashboard_controls li a:visited {
-        padding: 20px;
-        font-size: 0.8em;
-        width: 100px;
-        height: 70px;
-    }
-
-    div.block.login {
-        width: 340px;
-    }
-}
-
 @media screen
 and (device-width: 360px)
 and (device-height: 640px)
@@ -2063,6 +2028,63 @@ and (orientation: portrait) {
     div.statTable table td:last-child {
         display: table-cell;
     }
+
+    div.contentBox div.quick_actions,
+    div.contentBox ul.dashboard_controls,
+    div.contentBox div.quick_actions ul.statistics,
+    div.contentBox div.quick_actions ul.actions {
+        width: 100%;
+        float: none;
+        margin: 0 0 15px 0;
+    }
+}
+
+/* Landscape */
+@media screen
+and (device-height: 360px)
+and (device-width: 640px)
+and (-webkit-device-pixel-ratio: 3)
+and (orientation: landscape) {
+    div.leftColumn {
+        width: 55px;
+    }
+
+    div.rightColumn {
+        width: auto;
+    }
+
+    .dataTables_wrapper .dataTables_filter input {
+        width: 200px !important;
+    }
+
+    div.headerNav ul li ul {
+        width: 220px;
+    }
+
+    div.contentBox ul.dashboard_controls li a:link,
+    div.contentBox ul.dashboard_controls li a:visited {
+        padding: 20px;
+        font-size: 0.8em;
+        width: 100px;
+        height: 70px;
+    }
+
+    div.block.login {
+        width: 340px;
+    }
+
+    div.contentBox div.quick_actions,
+    div.contentBox ul.dashboard_controls,
+    div.contentBox div.quick_actions ul.statistics,
+    div.contentBox div.quick_actions ul.actions {
+        width: 100%;
+        float: none;
+        margin: 0 0 15px 0;
+    }
+
+    div.products_list table tr td input[type=number] {
+        width: 95px;
+    }
 }
 
 /* Portrait */
@@ -2077,11 +2099,24 @@ and (orientation: portrait) {
         vertical-align: middle;
         width: 20px;
         font: 1.15em 'Arial';
-        border-left: 1px solid #4498C3;
+        border-left: 1px solid #a2842b;
+    }
+    div.headerNav ul li a.selected {
+        border-left: 1px solid #735602;
     }
     div.leftColumn {
         min-width: 45px;
     }
+
+    div.box ul.mainNav li span {
+        padding: 10px 10px 5px 10px;
+        height: 24px;
+    }
+
+    div.box ul.mainNav li:hover > span {
+        right: 45px;
+    }
+
     div.box ul.mainNav li a:link,
     div.box ul.mainNav li a:visited {
         display: block;
@@ -2106,6 +2141,27 @@ and (orientation: portrait) {
     }
     div.block.login {
         width: 300px;
+    }
+
+    div.products_list table tr td,
+    div.products_list table tr th {
+        display: inline-block;
+    }
+
+    div.products_list table tr:first-child {
+        display: none;
+    }
+
+    div.products_list table tr td input[type=number] {
+        width: 85px;
+    }
+
+    div.products_list {
+        min-width: 255px;
+    }
+
+    form.appForm select {
+        width: 100%;
     }
 }
 

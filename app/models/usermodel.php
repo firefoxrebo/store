@@ -37,7 +37,7 @@ class UserModel extends AbstractModel
     public function cryptPwd($password)
     {
         // Generate a random unique 22 alphanumeric characters
-        $iv = substr(bin2hex(mcrypt_create_iv(22, MCRYPT_DEV_RANDOM)), 0, 22);
+        $iv = substr(bin2hex(openssl_random_pseudo_bytes(22)), 0, 22);
         // Generate the bluefish salt, Use the $2y$ for security fix from PHP >= 5.3.7
         // otherwise use the $2a$ prefix for backward compatibility
         $sault = '$2y$10$' . $iv;

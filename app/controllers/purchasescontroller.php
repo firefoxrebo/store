@@ -76,24 +76,67 @@ class PurchasesController extends AbstractController
     public function editAction()
     {
         $id = $this->_getParam(0, 'int');
-        $category = Models\CategoryModel::getByPK($id);
-        if($category === false) {
+        $invoice = Models\SupplierInvoiceModel::getByPK($id);
+        if($invoice === false) {
             $this->routeTo('/purchases');
         }
 
-        $this->_data['category'] = $category;
+        $this->_data['invoice'] = $invoice;
+        $details = $this->_data['details'] = Models\SupplierInvoiceDetailsModel::getByInvoiceId($invoice);
 
         $this->lang->load('common|template');
         $this->lang->load('purchases|edit');
         $this->lang->load('purchases|label');
+
+        $this->_data['suppliers'] = Models\SupplierModel::getAll();
+
+        $products = Models\ProductModel::getAll();
+        foreach ($products as &$product) {
+            foreach ($details as $detail) {
+                if($detail->productId == @$product->id) {
+                    $product = false;
+                }
+            }
+        }
+
+        $productsIterator = iterator_to_array($products);
+        $newProducts = [];
+        foreach ($productsIterator as $item) {
+            if(false !== $item) {
+                $newProducts[] = $item;
+            }
+        }
+
+        $products = $newProducts;
+        $this->_data['products'] = $products;
 
         if(isset($_POST['submit'])) {
             if($this->isValidRequest()) {
                 if(!$this->requestHasValidToken($_POST['token'])) {
                     $this->routeTo('/purchases');
                 }
-                $category->name = $this->filterString($_POST['name']);
-                if($category->save()) {
+                $invoice->supplierId = $this->filterInt($_POST['supplierId']);
+                $invoice->paymentType = $this->filterInt($_POST['paymentType']);
+
+                $productsIds = $this->filterStringArray($_POST['productv']);
+                $productsPrices = $this->filterStringArray($_POST['productp']);
+                $productsQuantities = $this->filterStringArray($_POST['productq']);
+
+                if($invoice->save()) {
+
+                    foreach ($details as $detail) {
+                        $detail->delete();
+                    }
+
+                    for ( $i = 0, $ii = count($productsIds); $i < $ii; $i++ ) {
+                        $details = new Models\SupplierInvoiceDetailsModel();
+                        $details->invoiceId = $invoice->id;
+                        $details->productId = $productsIds[$i];
+                        $details->quantity = $productsQuantities[$i];
+                        $details->price = $productsPrices[$i];
+                        $details->save();
+                    }
+
                     $this->messenger->add(
                         'message',
                         $this->lang->get('purchases|common', 'edit_success')

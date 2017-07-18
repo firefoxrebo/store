@@ -18,7 +18,7 @@
                 </li>
 
                 <li>
-                    <a href="/store" class="<?php if($this->highlightMenu(array('store', 'categories', 'products', 'purchases', 'clientstransactions'))) echo 'selected'; ?>">
+                    <a href="/store" class="<?php if($this->highlightMenu(array('store', 'categories', 'products', 'purchases', 'sales'))) echo 'selected'; ?>">
                         <i class="material-icons">store</i>
                     </a>
                     <span><?= $text_ctrl_store; ?></span>

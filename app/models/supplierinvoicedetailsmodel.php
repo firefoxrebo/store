@@ -25,7 +25,9 @@ class SupplierInvoiceDetailsModel extends AbstractModel
     public static function getByInvoiceId(SupplierInvoiceModel $invoice)
     {
         $details = self::get(
-            'SELECT * FROM ' . self::$tableName . ' WHERE invoiceId = ' . $invoice->id
+            'SELECT *, 
+            (SELECT name FROM app_products WHERE app_products.id = productId) name  
+            FROM ' . self::$tableName . ' WHERE invoiceId = ' . $invoice->id
         );
         return $details;
     }

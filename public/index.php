@@ -7,7 +7,6 @@ use Lilly\Core\Security as Security;
 use Lilly\Core\ACL as ACL;
 use Lilly\Core\HTTP\HTTPRequest;
 
-
 if(!defined('DS')) {
     define('DS', DIRECTORY_SEPARATOR);
 }
@@ -19,6 +18,7 @@ ob_start();
 // Start session 
 $session = new Core\SessionManager();
 $session->start();
+//session_start();
 
 // Open Database Connection and get an instance of Database
 $db = Core\Database\DatabaseHandler::factory();
