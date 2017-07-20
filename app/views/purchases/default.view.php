@@ -18,7 +18,7 @@
                         <th><?= $text_table_total ?></th>
                         <th><?= $text_table_payment_type; ?></th>
                         <th><?= $text_table_paid; ?></th>
-                        <th style="width: 100px"><?= $text_table_control; ?></th>
+                        <th style="width: 40px"><?= $text_table_control; ?></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -35,10 +35,15 @@
                                 <td><?= round($invoice->total, 2) ?></td>
                                 <td><?= ${'text_payment_type_' . $invoice->paymentType}; ?></td>
                                 <td><?= ${'text_paid_' . $invoice->paid}; ?></td>
-                                <td>
-                                    <a title="<?= $text_table_control_view ?>" href="/purchases/view/<?= $invoice->id ?>"><i class="fa fa-eye"></i></a>
-                                    <a title="<?= $text_table_control_edit ?>" href="/purchases/edit/<?= $invoice->id ?>"><i class="fa fa-edit"></i></a>
-                                    <a title="<?= $text_table_control_delete ?>" href="/purchases/delete/<?= $invoice->id ?>/?token=<?= $this->session->CSRFToken ?>" onclick="if(!confirm('<?= $text_table_control_delete_confirm ?>')) return false;"><i class="fa fa-trash"></i></a>
+                                <td class="controls_td">
+                                    <a href="javascript:;" class="open_controls"><i class="fa fa-caret-square-o-left"></i></a>
+                                    <div class="controls_container">
+                                        <a href="/purchases/view/<?= $invoice->id ?>"><i class="fa fa-eye"></i> <?= $text_table_control_view ?></a>
+                                        <a href="/purchases/edit/<?= $invoice->id ?>"><i class="fa fa-edit"></i> <?= $text_table_control_edit ?></a>
+                                        <a href="/purchases/delete/<?= $invoice->id ?>/?token=<?= $this->session->CSRFToken ?>" onclick="if(!confirm('<?= $text_table_control_delete_confirm ?>')) return false;"><i class="fa fa-trash"></i> <?= $text_table_control_delete ?></a>
+                                        <a href="/purchases/deliverproducts/<?= $invoice->id ?>"><i class="fa fa-truck"></i> <?= $text_table_control_deposit ?></a>
+                                        <a href="/safetybox/receipt/<?= $invoice->id ?>"><i class="fa fa-credit-card"></i> <?= $text_table_control_pay ?></a>
+                                    </div>
                                 </td>
                             </tr>
                             <?php

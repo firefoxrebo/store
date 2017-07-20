@@ -6,6 +6,7 @@ $_['text_mobile_label'] = 'رقم جوال العميل';
 $_['text_email_label'] = 'البريد الالكتروني للمورد';
 $_['text_address_label'] = 'عنوان العميل';
 $_['text_subscribed_label'] = 'تاريخ التسجيل معنا';
+$_['text_is_supplier'] = 'العميل مورد ايضا';
 $_['text_submit'] = 'حفظ';
 
 

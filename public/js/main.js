@@ -96,6 +96,9 @@ $('div.select_checkbox, div.options').click(function(evt)
 $(document).click(function()
 {
     $('div.select_checkbox div.options').slideUp();
+    $('a.open_controls').html('<i class="fa fa-caret-square-o-left"></i>').css({color: '#735602'});
+    $('div.controls_container').hide();
+    $('div.controls_container').css({top: 6});
 });
 
 // $('select').selectivity();
@@ -136,4 +139,29 @@ $('input.purchaseBtn').click(function(evt)
         evt.preventDefault();
         alert('عفوا يجب عليك اختيار اصناف من القائمة و اضافتها للفاتورة')
     }
+});
+
+$('a.open_controls').click(function(evt)
+{
+    evt.preventDefault();
+    evt.stopPropagation();
+    var theLink = $(this);
+    $('a.open_controls').not(theLink).html('<i class="fa fa-caret-square-o-left"></i>').css({color: '#735602'});
+    if(theLink.html() == '<i class="fa fa-caret-square-o-left"></i>') {
+        theLink.html('<i class="fa fa-caret-square-o-down"></i>').css({color: '#d2aa37'});;
+    } else {
+        theLink.html('<i class="fa fa-caret-square-o-left"></i>').css({color: '#735602'});
+    }
+    var $this = $(this).next('div.controls_container');
+    $("div.controls_container").not($this).hide();
+    $this.toggle();
+
+    if($this.height() > ($(window).height() - (evt.clientY || evt.screenY))) {
+        $this.css({top: ($this.height() - 23) * -1});
+    }
+});
+
+$('div.controls_container').click(function (evt)
+{
+    evt.stopPropagation();
 });

@@ -19,6 +19,8 @@ class ClientModel extends AbstractModel
 
     public $subscribed;
 
+    public $isSupplier;
+
     protected static $tableName = 'app_clients';
 
     protected static $primaryKey = 'id';
@@ -29,7 +31,8 @@ class ClientModel extends AbstractModel
         'mobile' => self::DATA_TYPE_STR,
         'address' => self::DATA_TYPE_STR,
         'email' => self::DATA_TYPE_STR,
-        'subscribed' => self::DATA_TYPE_DATE
+        'subscribed' => self::DATA_TYPE_DATE,
+        'isSupplier' => self::DATA_TYPE_BOOL
     );
 
     public function hasTransactions()

@@ -95,6 +95,16 @@
                     </tr>
                     <tr>
                         <td>
+                            <label for="isClient"><?= $text_is_client ?></label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="checkbox" id="isClient" <?= $this->boxCheckedIf('isClient', 1, $client) ?> name="isClient" value="<?= $this->showValue('isClient', $client) ?>"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
                             <input type="hidden" name="token" value="<?= $this->_registry->session->CSRFToken ?>">
                             <input type="submit" name="submit" value="<?= $text_submit ?>"/>
                         </td>

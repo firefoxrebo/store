@@ -44,14 +44,15 @@ class SuppliersController extends AbstractController
                 if(!$this->requestHasValidToken($_POST['token'])) {
                     $this->routeTo('/suppliers');
                 }
-                $client = new Models\SupplierModel();
-                $client->name = $this->filterString($_POST['name']);
-                $client->city = $this->filterInt($_POST['city']);
-                $client->mobile = $this->filterString($_POST['mobile']);
-                $client->subscribed = $_POST['subscribed'];
-                $client->email = $this->filterEmail($_POST['email']);
-                $client->address = $this->filterString($_POST['address']);
-                if($client->save()) {
+                $supplier = new Models\SupplierModel();
+                $supplier->name = $this->filterString($_POST['name']);
+                $supplier->city = $this->filterInt($_POST['city']);
+                $supplier->mobile = $this->filterString($_POST['mobile']);
+                $supplier->subscribed = $_POST['subscribed'];
+                $supplier->email = $this->filterEmail($_POST['email']);
+                $supplier->address = $this->filterString($_POST['address']);
+                $supplier->isClient = (isset($_POST['isClient'])) ? 1 : 0;
+                if($supplier->save()) {
                     $this->messenger->add(
                         'message',
                         $this->lang->get('suppliers|common', 'add_success')
@@ -67,14 +68,14 @@ class SuppliersController extends AbstractController
     public function editAction()
     {
         $id = $this->_getParam(0, 'int');
-        $client = Models\SupplierModel::getByPK($id);
-        if($client === false) {
+        $supplier = Models\SupplierModel::getByPK($id);
+        if($supplier === false) {
             $this->routeTo('/suppliers');
         }
 
         $this->_data['cities'] = $this->lang->get('suppliers|cities');
 
-        $this->_data['client'] = $client;
+        $this->_data['client'] = $supplier;
 
         $this->lang->load('common|template');
         $this->lang->load('suppliers|edit');
@@ -85,13 +86,14 @@ class SuppliersController extends AbstractController
                 if(!$this->requestHasValidToken($_POST['token'])) {
                     $this->routeTo('/suppliers');
                 }
-                $client->name = $this->filterString($_POST['name']);
-                $client->city = $this->filterInt($_POST['city']);
-                $client->mobile = $this->filterString($_POST['mobile']);
-                $client->subscribed = $_POST['subscribed'];
-                $client->email = $this->filterEmail($_POST['email']);
-                $client->address = $this->filterString($_POST['address']);
-                if($client->save()) {
+                $supplier->name = $this->filterString($_POST['name']);
+                $supplier->city = $this->filterInt($_POST['city']);
+                $supplier->mobile = $this->filterString($_POST['mobile']);
+                $supplier->subscribed = $_POST['subscribed'];
+                $supplier->email = $this->filterEmail($_POST['email']);
+                $supplier->address = $this->filterString($_POST['address']);
+                $supplier->isClient = (isset($_POST['isClient'])) ? 1 : 0;
+                if($supplier->save()) {
                     $this->messenger->add(
                         'message',
                         $this->lang->get('suppliers|common', 'edit_success')
@@ -110,15 +112,12 @@ class SuppliersController extends AbstractController
             $this->routeTo('/suppliers');
         }
         $id = $this->_getParam(0, 'int');
-        $client = Models\SupplierModel::getByPK($id);
-        if($client === false) {
+        $supplier = Models\SupplierModel::getByPK($id);
+        if($supplier === false) {
             $this->routeTo('/suppliers');
         }
-//        if($client->hasTransactions()) {
-//            $this->session->message = array($this->lang->get('suppliers|common', 'has_transactions'), APP_INFO);
-//            $this->routeTo('/suppliers');
-//        }
-        if($client->delete()){
+
+        if($supplier->delete()){
             $this->messenger->add(
                 'message',
                 $this->lang->get('suppliers|common', 'delete_success')
@@ -136,14 +135,14 @@ class SuppliersController extends AbstractController
     public function viewAction()
     {
         $id = $this->_getParam(0, 'int');
-        $client = Models\SupplierModel::getByPK($id);
-        if($client === false) {
+        $supplier = Models\SupplierModel::getByPK($id);
+        if($supplier === false) {
             $this->routeTo('/suppliers');
         }
 
         $this->_data['cities'] = $this->lang->get('suppliers|cities');
 
-        $this->_data['client'] = $client;
+        $this->_data['client'] = $supplier;
 
         $this->lang->load('common|template');
         $this->lang->load('suppliers|view');

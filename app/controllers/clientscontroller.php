@@ -51,6 +51,7 @@ class ClientsController extends AbstractController
                 $client->subscribed = $_POST['subscribed'];
                 $client->email = $this->filterEmail($_POST['email']);
                 $client->address = $this->filterString($_POST['address']);
+                $client->isSupplier = (isset($_POST['isSupplier'])) ? 1 : 0;
                 if($client->save()) {
                     $this->messenger->add(
                         'message',
@@ -91,6 +92,7 @@ class ClientsController extends AbstractController
                 $client->subscribed = $_POST['subscribed'];
                 $client->email = $this->filterEmail($_POST['email']);
                 $client->address = $this->filterString($_POST['address']);
+                $client->isSupplier = (isset($_POST['isSupplier'])) ? 1 : 0;
                 if($client->save()) {
                     $this->messenger->add(
                         'message',

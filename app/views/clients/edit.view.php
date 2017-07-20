@@ -95,6 +95,16 @@
                     </tr>
                     <tr>
                         <td>
+                            <label for="isSupplier"><?= $text_is_supplier ?></label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="checkbox" id="isSupplier" <?= $this->boxCheckedIf('isSupplier', 1, $client) ?> name="isSupplier" value="<?= $this->showValue('isSupplier', $client) ?>"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
                             <input type="hidden" name="token" value="<?= $this->_registry->session->CSRFToken ?>">
                             <input type="submit" name="submit" value="<?= $text_submit ?>"/>
                         </td>

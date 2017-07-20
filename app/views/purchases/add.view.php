@@ -11,9 +11,8 @@
                     </tr>
                     <tr>
                         <td>
-                            <label class="sameRow"><input required type="radio" name="paymentType" <?= (@$_POST['paymentType'] == 1 ? 'checked' : '') ?> value="1"> <?= $text_payment_type_1 ?></label>
-                            <label class="sameRow"><input required type="radio" name="paymentType" <?= (@$_POST['paymentType'] == 2 ? 'checked' : '') ?> value="2"> <?= $text_payment_type_2 ?></label>
-                            <label class="sameRow"><input required type="radio" name="paymentType" <?= (@$_POST['paymentType'] == 3 ? 'checked' : '') ?> value="3"> <?= $text_payment_type_3 ?></label>
+                            <label class="sameRow"><input required type="radio" name="paymentType" <?= $this->boxCheckedIf('paymentType', 1) ?> value="<?= $this->showValue('paymentType', null, 1) ?>"> <?= $text_payment_type_1 ?></label>
+                            <label class="sameRow"><input required type="radio" name="paymentType" <?= $this->boxCheckedIf('paymentType', 2) ?> value="<?= $this->showValue('paymentType', null, 2) ?>"> <?= $text_payment_type_2 ?></label>
                         </td>
                     </tr>
                     <tr>
@@ -26,7 +25,7 @@
                             <select required name="supplierId" id="supplierId">
                                 <option value=""><?= $text_select ?></option>
                                 <?php if (false !== $suppliers): foreach ($suppliers as $supplier): ?>
-                                    <option <?= (@$_POST['supplierId'] == $supplier->id) ? 'selected' : '' ?> value="<?= $supplier->id ?>"><?= $supplier->name ?></option>
+                                    <option value='<?= '{' . '"id":' . $supplier->id . ',"type":' . $supplier->type . '}' ?>'><?= $supplier->name ?></option>
                                 <?php endforeach;endif; ?>
                             </select>
                             <p class="error error_<?= @$this->messenger->statusOf('text_error_supplierId') ?>">

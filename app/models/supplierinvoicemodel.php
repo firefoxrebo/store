@@ -13,6 +13,7 @@ class SupplierInvoiceModel extends AbstractModel
     public $approvedBy;
     public $paid;
     public $paymentType;
+    public $supplierType;
 
     protected static $tableName = 'app_suppliers_invoices';
 
@@ -25,17 +26,18 @@ class SupplierInvoiceModel extends AbstractModel
         'approved' => self::DATA_TYPE_INT,
         'approvedBy' => self::DATA_TYPE_INT,
         'paid' => self::DATA_TYPE_BOOL,
-        'paymentType' => self::DATA_TYPE_INT
+        'paymentType' => self::DATA_TYPE_INT,
+        'supplierType' => self::DATA_TYPE_INT
     );
 
     public static function getAll()
     {
         $invoices = self::get(
-            'SELECT asi.*, `as`.name supplier, 
+            'SELECT asi.*,  
             (SELECT SUM(price * quantity) FROM app_suppliers_invoices_details WHERE invoiceId = asi.id) total,
-            (SELECT COUNT(*) FROM app_suppliers_invoices_details WHERE invoiceId = asi.id) ptotal
-            FROM ' . self::$tableName . ' asi INNER JOIN 
-            app_suppliers `as` ON `as`.id = asi.supplierId'
+            (SELECT COUNT(*) FROM app_suppliers_invoices_details WHERE invoiceId = asi.id) ptotal,
+            IF(asi.supplierType = 1, (SELECT name FROM app_suppliers WHERE app_suppliers.id = asi.supplierId), (SELECT name FROM app_clients WHERE app_clients.id = asi.supplierId)) supplier
+            FROM ' . self::$tableName . ' asi'
         );
         return $invoices;
     }

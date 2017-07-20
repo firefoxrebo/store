@@ -11,13 +11,14 @@ class PurchasesController extends AbstractController
     use Core\Helper;
 
     protected $dataSchema = [
-        'supplierId'        => 'required|num',
+        'supplierId'        => 'required|alphanumeric',
         'paymentType'       => 'required|num'
     ];
 
     public function defaultAction()
     {
         $this->_data['invoices'] = Models\SupplierInvoiceModel::getAll();
+
         $this->lang->load('common|template');
         $this->lang->load('purchases|default');
         $this->lang->load('purchases|label');
@@ -32,7 +33,10 @@ class PurchasesController extends AbstractController
         $this->lang->load('purchases|add');
         $this->lang->load('purchases|label');
 
-        $this->_data['suppliers'] = Models\SupplierModel::getAll();
+        $this->_data['suppliers'] = Models\SupplierModel::get(
+            'SELECT id, name, 1 as type from app_suppliers UNION SELECT id, name, 2 as type from app_clients WHERE isSupplier = 1'
+        );
+
         $this->_data['products'] = Models\ProductModel::getAll();
 
         if(isset($_POST['submit'])) {
@@ -41,7 +45,10 @@ class PurchasesController extends AbstractController
                     $this->routeTo('/purchases');
                 }
                 $invoice = new Models\SupplierInvoiceModel();
-                $invoice->supplierId = $this->filterInt($_POST['supplierId']);
+
+                $suppliersData = json_decode($_POST['supplierId']);
+                $invoice->supplierId = $this->filterInt($suppliersData->id);
+                $invoice->supplierType = $this->filterInt($suppliersData->type);
                 $invoice->paymentType = $this->filterInt($_POST['paymentType']);
                 $invoice->approved = 0;
                 $invoice->createdBy = $this->session->u->id;
@@ -88,7 +95,9 @@ class PurchasesController extends AbstractController
         $this->lang->load('purchases|edit');
         $this->lang->load('purchases|label');
 
-        $this->_data['suppliers'] = Models\SupplierModel::getAll();
+        $this->_data['suppliers'] = Models\SupplierModel::get(
+            'SELECT id, name, 1 as type from app_suppliers UNION SELECT id, name, 2 as type from app_clients WHERE isSupplier = 1'
+        );
 
         $products = Models\ProductModel::getAll();
         foreach ($products as &$product) {
@@ -115,7 +124,10 @@ class PurchasesController extends AbstractController
                 if(!$this->requestHasValidToken($_POST['token'])) {
                     $this->routeTo('/purchases');
                 }
-                $invoice->supplierId = $this->filterInt($_POST['supplierId']);
+
+                $suppliersData = json_decode($_POST['supplierId']);
+                $invoice->supplierId = $this->filterInt($suppliersData->id);
+                $invoice->supplierType = $this->filterInt($suppliersData->type);
                 $invoice->paymentType = $this->filterInt($_POST['paymentType']);
 
                 $productsIds = $this->filterStringArray($_POST['productv']);
@@ -176,5 +188,30 @@ class PurchasesController extends AbstractController
             );
         }
         $this->routeTo('/purchases');
+    }
+
+    public function viewAction()
+    {
+        $id = $this->_getParam(0, 'int');
+
+        $invoice = Models\SupplierInvoiceModel::getOne(
+            'SELECT *, IF(supplierType = 1, (SELECT name FROM app_suppliers WHERE app_suppliers.id = app_suppliers_invoices.supplierId), (SELECT name FROM app_clients WHERE app_clients.id = app_suppliers_invoices.supplierId)) supplier 
+                  FROM app_suppliers_invoices
+                  WHERE id = ' . $id
+        );
+
+        if($invoice === false) {
+            $this->routeTo('/purchases');
+        }
+
+        $this->_data['invoice'] = $invoice;
+        $this->_data['details'] = Models\SupplierInvoiceDetailsModel::getByInvoiceId($invoice);
+
+        $this->lang->load('common|template');
+        $this->lang->load('purchases|view');
+        $this->lang->load('purchases|label');
+
+
+        $this->_render();
     }
 }

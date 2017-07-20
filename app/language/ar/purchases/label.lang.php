@@ -21,17 +21,18 @@ $_['text_table_products_total'] = 'عدد الأصناف';
 $_['text_table_payment_type'] = 'طريقة الدفع';
 $_['text_table_paid'] = 'حالة الدفع';
 $_['text_table_control'] = 'التحكم';
-$_['text_table_control_view'] = 'عرض';
-$_['text_table_control_edit'] = 'تعديل';
-$_['text_table_control_delete'] = 'حذف';
+$_['text_table_control_view'] = 'عرض / طباعة الفاتورة';
+$_['text_table_control_edit'] = 'تعديل بيانات الفاتورة';
+$_['text_table_control_delete'] = 'حذف الفاتورة';
 $_['text_table_control_delete_confirm'] = 'هل تود حذف الفاتورة من قاعدة البيانات بالفعل؟';
+$_['text_table_control_deposit'] = 'صرف الكميات للمخزن';
+$_['text_table_control_pay'] = 'سداد الفاتورة';
 
 $_['text_approved_1'] = 'معتمدة';
 $_['text_approved_0'] = 'غير معتمدة';
 
-$_['text_payment_type_1'] = 'كاش';
-$_['text_payment_type_2'] = 'حوالة بنكية';
-$_['text_payment_type_3'] = 'آجل';
+$_['text_payment_type_1'] = 'نقدا';
+$_['text_payment_type_2'] = 'آجل';
 
 $_['text_paid_1'] = 'مدفوعة';
 $_['text_paid_0'] = 'غير مدفوعة';

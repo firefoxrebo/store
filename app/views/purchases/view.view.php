@@ -1,73 +1,76 @@
 <div class="rightColumn">
     <div class="block">
-        <header class="white">
-            <h2><?= $text_header ?></h2>
-        </header>
         <div class="contentBox clearfix">
-            <form action="" class="appForm" method="post">
-                <table>
+            <div class="bill">
+                <div class="title">
+                    <span>فاتورة</span>
+                    <span>Invoice</span>
+                </div>
+                <div class="paymentType">
+                    <div class="paymentTypeContainer">
+                        <span class="paymentTypeBox <?= $invoice->paymentType == 1 ? 'selected' : '' ?>"></span> نقدا Cash
+                        <span class="paymentTypeBox <?= $invoice->paymentType == 2 ? 'selected' : '' ?>"></span>آجل Credit
+                    </div>
+                    <div class="date">
+                        <span>التاريخ Date: <?= (new DateTime($invoice->created))->format('Y/m/d') ?></span>
+                    </div>
+                </div>
+                <h1>
+                    <span>السيد / السادة: </span><?= $invoice->supplier ?> <span>Mr./ Mes.</span>
+                </h1>
+                <table class="bill">
                     <tr>
-                        <td>
-                            <label for="name"><?= $text_name_label ?></label>
-                        </td>
+                        <th>م</th>
+                        <th>رقم الصنف</th>
+                        <th>البيان</th>
+                        <th>الكمية</th>
+                        <th>سعر الوحدة</th>
+                        <th>الاجمالي</th>
                     </tr>
-                    <tr>
-                        <td>
-                            <p><?= $client->name; ?></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label for="city"><?= $text_city_label ?></label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <p><?= $cities[$client->city] ?></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label for="mobile"><?= $text_mobile_label ?></label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <p><?= $client->mobile ?></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label for="email"><?= $text_email_label ?></label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <p><?= $client->email ?></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label for="address"><?= $text_address_label ?></label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <p><?= $client->address ?></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label for="subscribed"><?= $text_subscribed_label ?></label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <p><?= $client->subscribed ?></p>
-                        </td>
-                    </tr>
+                    <?php if (false !== $details): $total = 0; foreach ($details as $detail): $i = 0; ?>
+                        <tr>
+                            <td>
+                                <?= ++$i ?>
+                            </td>
+                            <td>
+                                P<?= $detail->productId ?>
+                            </td>
+                            <td>
+                                <?= $detail->name ?>
+                            </td>
+                            <td>
+                                <?= (int) $detail->quantity ?>
+                            </td>
+                            <td>
+                                <?= (int) $detail->price ?>
+                            </td>
+                            <td>
+                                <?= (int) $detail->quantity * (int) $detail->price ?>
+                                <?php $total += (int) $detail->quantity * (int) $detail->price ?>
+                            </td>
+                        </tr>
+                    <?php endforeach; endif; ?>
+                        <tr>
+                            <td colspan="5">إجمالي القيمة</td>
+                            <td colspan="1"><?= $total ?></td>
+                        </tr>
                 </table>
-            </form>
+                <h1>
+                    <span>فقط: </span><input autofocus type="text"><span>Only: </span>
+                </h1>
+                <div class="signatures">
+                    <div class="salesman">
+                        <p>توقيع البائع Salesman Signature</p>
+                    </div>
+                    <div class="buyer">
+                        <p>اسم المستلم و توقيعه Receiver Name & Signature</p>
+                    </div>
+                </div>
+                <div class="footer">
+                    <p>الرياض: شارع هارون الرشيد، حي المشاعل، مستودعات التويجري مستودع رقم ١</p>
+                    <p>ص.ب: ٨٧٣٩ - الرمز البريدي: ١١٩٤٢ - جوال: ٠٥٨٠٠٨٨٤١٦ - سجل تجاري: ١٠١١٠١١٤٠٢</p>
+                </div>
+            </div>
         </div>
         <footer>
             <p><?= $text_footer ?></p>

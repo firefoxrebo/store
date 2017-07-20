@@ -88,6 +88,16 @@
                     </tr>
                     <tr>
                         <td>
+                            <label for="isSupplier"><?= $text_is_supplier ?></label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="checkbox" id="isSupplier" name="isSupplier" <?= $this->boxCheckedIf('isSupplier', 1) ?> value="<?= $this->showValue('isSupplier', null, 1) ?>"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
                             <input type="hidden" name="token" value="<?= $this->_registry->session->CSRFToken ?>">
                             <input type="submit" name="submit" value="<?= $text_submit ?>"/>
                         </td>

@@ -1072,11 +1072,13 @@ div.products_list table tr td input[type=number] {
 
 .ui-tooltip {
     font-size: 0.8em !important;
-    background: #757e93;
+    font-family: "Neo Sans Arabic";
+    background: #735602;
     box-shadow: 0 2px 6px rgba(117,126,147,0.7) !important;
     color: #FFF !important;
     border: none !important;
     top: 1px;
+    padding: 5px;
 }
 
 /*
@@ -1540,6 +1542,218 @@ div.messageContainer div.message_body {
     padding: 10px;
     border-radius: 5px;
 }
+
+div.bill {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+div.bill div.title {
+    width: 100px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+div.bill div.title span {
+    font-size: 2em;
+    color: #b1933d;
+}
+
+div.bill div.title span + span {
+    font-size: 1.6em;
+}
+
+div.bill h1 {
+    padding: 10px;
+    border: solid 2px #b1933d;
+    border-radius: 10px;
+    font-size: 1.1em;
+    margin: 0 10px;
+}
+
+div.bill h1 span {
+    color: #b1933d;
+}
+
+div.bill h1 span:last-child {
+    float: left;
+    direction: ltr;
+}
+
+div.bill h1 input[type=text] {
+    background-color: #FFF;
+    padding: 3px;
+    min-width: 500px;
+}
+
+div.bill table.bill {
+    width: 100%;
+    border-spacing: 10px;
+    border-collapse: separate;
+}
+
+div.bill table.bill tr th {
+    background-color: #b1933d;
+    color: #FFF;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+div.bill table.bill tr th:nth-child(3) {
+    width: 40%;
+}
+
+div.bill table.bill tr td {
+    padding: 10px;
+    border-radius: 10px;
+    border: solid 2px #ccc;
+    text-align: center;
+}
+
+div.bill table.bill tr:last-child td:nth-child(1) {
+    border: solid 2px transparent;
+    text-align: left;
+}
+
+div.bill table.bill tr:last-child td:nth-child(2) {
+    border: solid 2px #b1933d;
+}
+
+div.bill div.paymentType {
+    margin: 15px 10px;
+    color: #666;
+    font-family: "Neo Sans Arabic";
+    height: 30px;
+}
+
+div.bill div.paymentType div.paymentTypeContainer {
+    float: right;
+}
+
+div.bill div.paymentType div.date {
+    float: left;
+}
+
+div.bill div.paymentType span.paymentTypeBox:first-of-type,
+div.bill div.paymentType span.paymentTypeBox:nth-of-type(2) {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    display: inline-block;
+    margin: 0 10px 0 5px;
+}
+
+div.bill div.paymentType span.paymentTypeBox:nth-of-type(2) {
+    margin: 0 20px 0 5px;
+}
+
+div.bill div.paymentType span.paymentTypeBox.selected {
+    background-color: #b1933d;
+}
+
+div.bill div.paymentType span.paymentTypeBox.selected::after {
+    font-family: FontAwesome;
+    display: block;
+    content: '\f00c';
+    color: #FFF;
+    font-size: 0.8em;
+    text-align: center;
+}
+
+div.bill div.signatures {
+    height: 80px;
+    margin: 50px 10px 0 10px;
+}
+
+div.bill div.signatures div.salesman {
+    width: 30%;
+    border-top: solid 1px #999;
+    float: right;
+    padding-top: 10px;
+}
+
+div.bill div.signatures div.buyer {
+    width: 65%;
+    border-top: solid 1px #999;
+    float: left;
+    padding-top: 10px;
+}
+
+div.bill div.signatures div.buyer p {
+    text-align: left;
+}
+
+div.bill div.signatures p {
+    font-family: "Neo Sans Arabic Medium" !important;
+}
+
+div.bill div.footer {
+    border-top: solid 2px #b1933d;
+    padding-top: 10px;
+}
+
+div.bill div.footer p {
+    font-family: "Neo Sans Arabic Medium" !important;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+td.controls_td {
+    position: relative;
+}
+
+td.controls_td div.controls_container {
+    position: absolute;
+    top: 6px;
+    left: 40px;
+    background: #FFF;
+    box-shadow: 0 0 5px #ccc;
+    border-radius: 3px;
+    z-index: 1000;
+    display: none;
+}
+
+td.controls_td div.controls_container a:link,
+td.controls_td div.controls_container a:visited {
+    display: block;
+    width: 150px;
+    padding: 8px 12px;
+    border-bottom: dashed 1px #f1f1f1;
+    text-align: right;
+    font-size: 14px;
+    margin: 0;
+    text-decoration: none;
+}
+
+td.controls_td div.controls_container a:hover,
+td.controls_td div.controls_container a:active {
+    background: #f3f5f7;
+}
+
+td.controls_td div.controls_container a > i {
+    width: 15px;
+    margin-left: 5px;
+    text-align: center;
+    font-size: 1.1em;
+    display: inline-block;
+}
+
+td.controls_td a.open_controls {
+    position: absolute;
+    top: 6px;
+    left: 10px;
+}
+
+td.controls_td a.open_controls i {
+    font-size: 1.3em !important;
+}
+
+td.controls_td div.controls_container a:last-child {
+    border: none;
+}
+
+
+
 /*
  * Data Table styles
  */
@@ -1855,21 +2069,30 @@ table.dataTable tr td:first-child a i {
 
 @media print {
     * {
-        background: transparent !important;
-        color: #000 !important; /* Black prints faster: h5bp.com/s */
         box-shadow: none !important;
         text-shadow: none !important;
     }
 
     h1, h2, h3, h4, h5, h6, p, li, a, input, select,
     textarea, legend, label, th, td, blockquote, q, span {
-        font-family: Arial, Helvetica, Sans-Serif !important;
-        color: #000;
+        font-family: "Neo Sans Arabic" !important;
+    }
+
+    table.bill th {
+        color: #FFF;
     }
     
-    div.topHeader, div.headerNav, div.leftColumn, 
+    div.topHeader, div.headerNav, div.leftColumn,
     div.rightColumn footer,
     div.rightColumn button.print {
+        display: none;
+    }
+
+    body {
+        background-color: transparent !important;
+    }
+
+    header.topHeader {
         display: none;
     }
     
@@ -1889,10 +2112,6 @@ table.dataTable tr td:first-child a i {
     
     form.appForm {
         display: none;
-    }
-    
-    div.printable {
-        display: block;
     }
 
     a,
@@ -1957,19 +2176,6 @@ table.dataTable tr td:first-child a i {
 
     h4 {
         page-break-before: always !important;
-    }
-
-    div.break_top {
-        height: 150px;
-        clear: both;
-    }
-
-    div.break {
-        margin: 0 0 300px 0;
-    }
-
-    div.break2 {
-        margin: 0 0 400px 0;
     }
 }
 

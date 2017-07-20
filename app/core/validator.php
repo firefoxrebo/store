@@ -72,7 +72,7 @@ trait Validator
     public function alphanumeric($str)
     {
         if($str != '') {
-            return !preg_match('/[^a-zA-Z0-9\:\?\\-؟\p{Arabic}\s٠١٢٣٤٥٦٧٨٩]/ui', $str);
+            return !preg_match('/[^a-zA-Z0-9\:\?\\-\[\]\=\>\,\{\}\"؟\p{Arabic}\s٠١٢٣٤٥٦٧٨٩]/ui', $str);
         }
         return true;
     }
