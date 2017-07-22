@@ -3,6 +3,7 @@
 $_['text_name_label'] = 'اسم المنتج';
 $_['text_unit_label'] = 'الوحدة';
 $_['text_price_label'] = 'سعر الوحدة';
+$_['text_quantity_label'] = 'الكمية المتاحة بالمخزن';
 $_['text_category_label'] = 'القسم التابع له المنتج';
 $_['text_select'] = 'اختار عنصر من القائمة';
 $_['text_submit'] = 'حفظ';
@@ -13,6 +14,7 @@ $_['text_table_name'] = 'إسم المنتج';
 $_['text_table_category'] = 'من قسم';
 $_['text_table_unit'] = 'الوحدة';
 $_['text_table_price'] = 'سعر الوحدة';
+$_['text_table_quantity'] = 'الكمية المتاحة بالمخزن';
 $_['text_table_created'] = 'تم اضافته بتاريخ';
 $_['text_table_control'] = 'التحكم';
 $_['text_table_control_edit'] = 'تعديل';

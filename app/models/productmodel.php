@@ -11,6 +11,7 @@ class ProductModel extends AbstractModel
     public $unit;
     public $price;
     public $created;
+    public $quantity;
 
     protected static $tableName = 'app_products';
 
@@ -21,7 +22,8 @@ class ProductModel extends AbstractModel
         'name' => self::DATA_TYPE_STR,
         'unit' => self::DATA_TYPE_INT,
         'price' => self::DATA_TYPE_STR,
-        'created' => self::DATA_TYPE_DATE
+        'created' => self::DATA_TYPE_DATE,
+        'quantity' => self::DATA_TYPE_INT
     );
 
     public static function getAll()
@@ -31,10 +33,5 @@ class ProductModel extends AbstractModel
             app_products_categories apc ON apc.id = ap.categoryId'
         );
         return $categories;
-    }
-
-    public function hasRelatedTransactions()
-    {
-
     }
 }

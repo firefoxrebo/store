@@ -48,6 +48,7 @@ class ManagerRole extends Role
         '/purchases/edit',
         '/purchases/delete',
         '/purchases/view',
+        '/purchases/deliverproducts',
 
         '/sales',
         '/sales/default',
@@ -56,6 +57,20 @@ class ManagerRole extends Role
         '/sales/delete',
         '/sales/view',
 
+        '/safetybox',
+        '/safetybox/default',
+
+        '/receiptvoucher',
+        '/receiptvoucher/default',
+        '/receiptvoucher/add',
+        '/receiptvoucher/edit',
+        '/receiptvoucher/delete',
+
+        '/paymentvoucher',
+        '/paymentvoucher/default',
+        '/paymentvoucher/add',
+        '/paymentvoucher/edit',
+        '/paymentvoucher/delete',
 
         '/store',
         '/store/default',

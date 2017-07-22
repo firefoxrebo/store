@@ -9,9 +9,8 @@ class SupplierInvoiceModel extends AbstractModel
     public $supplierId;
     public $createdBy;
     public $created;
-    public $approved;
-    public $approvedBy;
-    public $paid;
+    public $addedToStore;
+    public $addedToStoreBy;
     public $paymentType;
     public $supplierType;
 
@@ -23,9 +22,8 @@ class SupplierInvoiceModel extends AbstractModel
         'supplierId' => self::DATA_TYPE_INT,
         'createdBy' => self::DATA_TYPE_INT,
         'created' => self::DATA_TYPE_DATE,
-        'approved' => self::DATA_TYPE_INT,
-        'approvedBy' => self::DATA_TYPE_INT,
-        'paid' => self::DATA_TYPE_BOOL,
+        'addedToStore' => self::DATA_TYPE_INT,
+        'addedToStoreBy' => self::DATA_TYPE_INT,
         'paymentType' => self::DATA_TYPE_INT,
         'supplierType' => self::DATA_TYPE_INT
     );
@@ -36,9 +34,15 @@ class SupplierInvoiceModel extends AbstractModel
             'SELECT asi.*,  
             (SELECT SUM(price * quantity) FROM app_suppliers_invoices_details WHERE invoiceId = asi.id) total,
             (SELECT COUNT(*) FROM app_suppliers_invoices_details WHERE invoiceId = asi.id) ptotal,
+            (SELECT SUM(payment) FROM app_suppliers_invoices_payment_vouchers WHERE app_suppliers_invoices_payment_vouchers.invoiceid = asi.id) totalPaid,
             IF(asi.supplierType = 1, (SELECT name FROM app_suppliers WHERE app_suppliers.id = asi.supplierId), (SELECT name FROM app_clients WHERE app_clients.id = asi.supplierId)) supplier
             FROM ' . self::$tableName . ' asi'
         );
         return $invoices;
+    }
+
+    public function getInvoiceTotal()
+    {
+        return (int) self::get('SELECT SUM(price * quantity) total FROM app_suppliers_invoices_details WHERE invoiceId = ' . $this->id)->current()->total;
     }
 }

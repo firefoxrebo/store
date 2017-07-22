@@ -32,7 +32,7 @@
                 </li>
 
                 <li>
-                    <a href="/safetybox" class="<?php if($this->highlightMenu('safetybox')) echo 'selected'; ?>">
+                    <a href="/safetybox" class="<?php if($this->highlightMenu(array('safetybox', 'receiptvoucher', 'paymentvoucher'))) echo 'selected'; ?>">
                         <i class="fa fa-inbox"></i>
                     </a>
                     <span><?= $text_ctrl_bank; ?></span>

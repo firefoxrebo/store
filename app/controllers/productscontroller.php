@@ -52,6 +52,7 @@ class ProductsController extends AbstractController
                 $product->categoryId = $this->filterInt($_POST['categoryId']);
                 $product->price = $this->filterFloat($_POST['price']);
                 $product->unit = $this->filterInt($_POST['unit']);
+                $product->quantity = $this->filterInt($_POST['quantity']);
                 $product->created = date('Y-m-d');
                 if($product->save()) {
                     $this->messenger->add(
@@ -88,6 +89,7 @@ class ProductsController extends AbstractController
                 $product->name = $this->filterString($_POST['name']);
                 $product->price = $this->filterFloat($_POST['price']);
                 $product->unit = $this->filterInt($_POST['unit']);
+                $product->quantity = $this->filterInt($_POST['quantity']);
                 $product->created = date('Y-m-d');
                 if($product->save()) {
                     $this->messenger->add(

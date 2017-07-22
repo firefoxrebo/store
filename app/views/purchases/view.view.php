@@ -2,6 +2,9 @@
     <div class="block">
         <div class="contentBox clearfix">
             <div class="bill">
+                <div class="bill_number">
+                    <p>NO. <?= (new DateTime($invoice->created))->format('ym') . '-' . $invoice->id ?></p>
+                </div>
                 <div class="title">
                     <span>فاتورة</span>
                     <span>Invoice</span>

@@ -72,6 +72,19 @@
                     </tr>
                     <tr>
                         <td>
+                            <label for="quantity"><?= $text_quantity_label ?></label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="number" name="quantity" id="quantity" step="1" min="1" value="<?= @$_POST['quantity'] ?>">
+                            <p class="error error_<?= @$this->messenger->statusOf('text_error_quantity') ?>">
+                                <?= @$this->messenger->get('text_error_quantity') ?>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
                             <input type="hidden" name="token" value="<?= $this->_registry->session->CSRFToken ?>">
                             <input type="submit" name="submit" value="<?= $text_submit ?>"/>
                         </td>

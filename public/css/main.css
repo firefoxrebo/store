@@ -913,6 +913,33 @@ div.contentBox ul.dashboard_controls li a:active {
     color: #FFF;
 }
 
+div.contentBox ul.dashboard_controls li a.receipt_voucher div,
+div.contentBox ul.dashboard_controls li a.payment_voucher div {
+    width: 55px;
+    height: 55px;
+    transition: all 0.3s ease-in-out;
+}
+
+div.contentBox ul.dashboard_controls li a.receipt_voucher div {
+    background: url("/img/receipt.png") center center no-repeat;
+    margin: 0 auto;
+}
+
+div.contentBox ul.dashboard_controls li a.payment_voucher div {
+    background: url("/img/payment.png") center center no-repeat;
+    margin: 0 auto;
+}
+
+div.contentBox ul.dashboard_controls li a.receipt_voucher:hover div,
+div.contentBox ul.dashboard_controls li a.receipt_voucher:active div {
+    background: url("/img/receipt_hover.png") center center no-repeat;
+}
+
+div.contentBox ul.dashboard_controls li a.payment_voucher:hover div,
+div.contentBox ul.dashboard_controls li a.payment_voucher:active div {
+    background: url("/img/payment_hover.png") center center no-repeat;
+}
+
 div.contentBox ul.dashboard_controls li a i {
     font-size: 3em;
     display: block;
@@ -1032,6 +1059,11 @@ div.contentBox div.quick_actions ul.actions h1:last-of-type:not(:only-of-type),
 div.contentBox div.quick_actions ul.statistics h1:last-of-type {
     margin: 20px 0 0 0;
 }
+
+div.contentBox div.quick_actions ul.statistics h1:only-of-type {
+    margin: 0px !important;
+}
+
 div.contentBox div.quick_actions ul.statistics div.chart {
     clear: both;
 }
@@ -1546,6 +1578,19 @@ div.messageContainer div.message_body {
 div.bill {
     width: 100%;
     box-sizing: border-box;
+    position: relative;
+}
+
+div.bill div.bill_number {
+    position: absolute;
+    top: 0px;
+    left: 10px;
+}
+
+div.bill div.bill_number p {
+    font-size: 1.1em;
+    color: #dd0000;
+    font-family: "Neo Sans Arabic Medium" !important;
 }
 
 div.bill div.title {
@@ -1688,8 +1733,13 @@ div.bill div.signatures p {
 }
 
 div.bill div.footer {
+    position: fixed;
     border-top: solid 2px #b1933d;
     padding-top: 10px;
+    bottom: 30px;
+    left: 35px;
+    right: 35px;
+    display: none;
 }
 
 div.bill div.footer p {
@@ -2176,6 +2226,10 @@ table.dataTable tr td:first-child a i {
 
     h4 {
         page-break-before: always !important;
+    }
+
+    div.bill div.footer {
+        display: block;
     }
 }
 

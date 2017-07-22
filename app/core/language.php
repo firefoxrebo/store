@@ -51,6 +51,14 @@ class Language
             trigger_error('the language file ' . $dictionary . ' does not exists', E_USER_WARNING);
         }
     }
+
+    public function feed($key, $replace)
+    {
+        if(array_key_exists($key, $this->_dictionary)) {
+            array_unshift($replace, $this->_dictionary[$key]);
+            $this->_dictionary[$key] = call_user_func_array('sprintf', $replace);
+        }
+    }
     
     public function getDictionary()
     {

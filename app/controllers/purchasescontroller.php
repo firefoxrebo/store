@@ -50,9 +50,8 @@ class PurchasesController extends AbstractController
                 $invoice->supplierId = $this->filterInt($suppliersData->id);
                 $invoice->supplierType = $this->filterInt($suppliersData->type);
                 $invoice->paymentType = $this->filterInt($_POST['paymentType']);
-                $invoice->approved = 0;
+                $invoice->addedToStore = 0;
                 $invoice->createdBy = $this->session->u->id;
-                $invoice->paid = 0;
                 $invoice->created = date('Y-m-d H:i:s');
 
                 $productsIds = $this->filterStringArray($_POST['productv']);
@@ -84,7 +83,7 @@ class PurchasesController extends AbstractController
     {
         $id = $this->_getParam(0, 'int');
         $invoice = Models\SupplierInvoiceModel::getByPK($id);
-        if($invoice === false) {
+        if($invoice === false || $invoice->addedToStore == 1) {
             $this->routeTo('/purchases');
         }
 
@@ -168,7 +167,7 @@ class PurchasesController extends AbstractController
         }
         $id = $this->_getParam(0, 'int');
         $invoice = Models\SupplierInvoiceModel::getByPK($id);
-        if($invoice === false) {
+        if($invoice === false || $invoice->addedToStore == 1) {
             $this->routeTo('/purchases');
         }
         $details = Models\SupplierInvoiceDetailsModel::getByInvoiceId($invoice);
@@ -211,7 +210,38 @@ class PurchasesController extends AbstractController
         $this->lang->load('purchases|view');
         $this->lang->load('purchases|label');
 
+        $this->_data['title'] = 'عرض بيانات فاتورة ' . (new \DateTime($invoice->created))->format('ym') . $invoice->id;
+        $this->_data['text_header'] = 'عرض بيانات فاتورة ' . (new \DateTime($invoice->created))->format('ym') . $invoice->id;
+        $this->_data['text_footer'] = 'عرض بيانات فاتورة ' . (new \DateTime($invoice->created))->format('ym') . $invoice->id;
 
         $this->_render();
+    }
+
+    public function deliverProductsAction()
+    {
+        $id = $this->_getParam(0, 'int');
+
+        $invoice = Models\SupplierInvoiceModel::getByPK($id);
+
+        if($invoice === false || $invoice->addedToStore == 1 || !$this->requestHasValidToken($_GET['token'])) {
+            $this->routeTo('/purchases');
+        }
+
+        $details = Models\SupplierInvoiceDetailsModel::getByInvoiceId($invoice);
+        if($details !== false) {
+            foreach ($details as $detail) {
+                $product = Models\ProductModel::getByPK($detail->productId);
+                $product->quantity += $detail->quantity;
+                $product->save();
+            }
+            $invoice->addedToStore = 1;
+            if($invoice->save()) {
+                $this->messenger->add(
+                    'message',
+                    $this->lang->get('purchases|common', 'added_to_store_success')
+                );
+            }
+        }
+        $this->routeTo('/purchases');
     }
 }

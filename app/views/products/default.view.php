@@ -14,6 +14,7 @@
                         <th><?= $text_table_category; ?></th>
                         <th><?= $text_table_unit; ?></th>
                         <th><?= $text_table_price; ?></th>
+                        <th><?= $text_table_quantity; ?></th>
                         <th><?= $text_table_created; ?></th>
                         <th style="width: 100px"><?= $text_table_control; ?></th>
                     </tr>
@@ -28,6 +29,7 @@
                                 <td><?= $product->category; ?></td>
                                 <td><?= ${'text_unit_' . $product->unit}; ?></td>
                                 <td><?= round($product->price,2); ?></td>
+                                <td><?= $product->quantity; ?></td>
                                 <td><?= $product->created; ?></td>
                                 <td>
                                     <a title="<?= $text_table_control_edit ?>" href="/products/edit/<?= $product->id ?>" ><i class="fa fa-edit"></i></a>
