@@ -14,6 +14,16 @@ trait Helper
         exit;
     }
 
+    public function routeBack($route = false)
+    {
+        session_write_close();
+        if(array_key_exists('HTTP_REFERER', $_SERVER)) {
+            $route = $_SERVER['HTTP_REFERER'];
+        }
+        header('Location: ' . $route);
+        exit;
+    }
+
     /**
      * @param $str string
      * Calculates the string length. This method

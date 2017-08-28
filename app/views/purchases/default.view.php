@@ -27,7 +27,7 @@
                         foreach($invoices as $invoice) {
                             ?>
                             <tr>
-                                <td><?= (new DateTime($invoice->created))->format('ym-') ?><?= $invoice->id; ?></td>
+                                <td>B-<?= (new DateTime($invoice->created))->format('ym-') ?><?= $invoice->id; ?></td>
                                 <td><?= $invoice->supplier; ?></td>
                                 <td><?= (new DateTime($invoice->created))->format('Y-m-d h:i a'); ?></td>
                                 <td><?= ${'text_added_to_store_' . $invoice->addedToStore}; ?></td>

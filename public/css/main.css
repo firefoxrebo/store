@@ -914,10 +914,13 @@ div.contentBox ul.dashboard_controls li a:active {
 }
 
 div.contentBox ul.dashboard_controls li a.receipt_voucher div,
-div.contentBox ul.dashboard_controls li a.payment_voucher div {
+div.contentBox ul.dashboard_controls li a.payment_voucher div,
+div.contentBox ul.dashboard_controls li a.income_voucher div,
+div.contentBox ul.dashboard_controls li a.outcome_voucher div {
     width: 55px;
-    height: 55px;
+    height: 35px;
     transition: all 0.3s ease-in-out;
+    margin-bottom: 8px !important;
 }
 
 div.contentBox ul.dashboard_controls li a.receipt_voucher div {
@@ -930,6 +933,11 @@ div.contentBox ul.dashboard_controls li a.payment_voucher div {
     margin: 0 auto;
 }
 
+div.contentBox ul.dashboard_controls li a.outcome_voucher div {
+    background: url("/img/outcome.png") center center no-repeat;
+    margin: 0 auto;
+}
+
 div.contentBox ul.dashboard_controls li a.receipt_voucher:hover div,
 div.contentBox ul.dashboard_controls li a.receipt_voucher:active div {
     background: url("/img/receipt_hover.png") center center no-repeat;
@@ -938,6 +946,11 @@ div.contentBox ul.dashboard_controls li a.receipt_voucher:active div {
 div.contentBox ul.dashboard_controls li a.payment_voucher:hover div,
 div.contentBox ul.dashboard_controls li a.payment_voucher:active div {
     background: url("/img/payment_hover.png") center center no-repeat;
+}
+
+div.contentBox ul.dashboard_controls li a.outcome_voucher:hover div,
+div.contentBox ul.dashboard_controls li a.outcome_voucher:active div {
+    background: url("/img/outcome_hover.png") center center no-repeat;
 }
 
 div.contentBox ul.dashboard_controls li a i {
@@ -1642,10 +1655,12 @@ div.bill table.bill tr th {
     color: #FFF;
     padding: 10px;
     border-radius: 10px;
+    font-size: 0.8em;
+    font-family: "Neo Sans Arabic Medium" !important;
 }
 
 div.bill table.bill tr th:nth-child(3) {
-    width: 40%;
+    width: 50%;
 }
 
 div.bill table.bill tr td {
@@ -1800,6 +1815,10 @@ td.controls_td a.open_controls i {
 
 td.controls_td div.controls_container a:last-child {
     border: none;
+}
+
+tr.break td {
+    border: none !important;
 }
 
 
@@ -2228,8 +2247,23 @@ table.dataTable tr td:first-child a i {
         page-break-before: always !important;
     }
 
+    tr.break {
+        display: block;
+        page-break-before: always !important;
+        margin-bottom: 150px;
+        /*page-break-inside: auto !important;*/
+    }
+
+    tr.break td {
+        border: none;
+    }
+
     div.bill div.footer {
         display: block;
+    }
+
+    div.bill table.bill tr th {
+        font-family: "Neo Sans Arabic Medium" !important;
     }
 }
 

@@ -9,12 +9,9 @@
                     <thead>
                     <tr>
                         <th><?= $text_table_ref; ?></th>
-                        <th><?= $text_table_invoice ?></th>
-                        <th><?= $text_table_supplier; ?></th>
                         <th><?= $text_table_created; ?></th>
+                        <th><?= $text_table_description ?></th>
                         <th><?= $text_table_payment; ?></th>
-                        <th><?= $text_table_payment_type; ?></th>
-                        <th><?= $text_table_number ?></th>
                         <th style="width: 40px"><?= $text_table_control; ?></th>
                     </tr>
                     </thead>
@@ -24,13 +21,10 @@
                         foreach($vouchers as $voucher) {
                             ?>
                             <tr>
-                                <td>V-<?= (new DateTime($voucher->created))->format('ym-') ?><?= $voucher->id; ?></td>
-                                <td>B-<?= (new DateTime($voucher->icreated))->format('ym-') ?><?= $voucher->invoiceId; ?></td>
-                                <td><?= $voucher->supplier; ?></td>
+                                <td>O-<?= (new DateTime($voucher->created))->format('ym-') ?><?= $voucher->id; ?></td>
                                 <td><?= (new DateTime($voucher->created))->format('Y-m-d h:i a'); ?></td>
+                                <td><?= $voucher->description; ?></td>
                                 <td><?= $voucher->payment; ?></td>
-                                <td><?= ${'text_payment_type_' . $voucher->paymentType}; ?></td>
-                                <td><?= $voucher->paymentNumber; ?></td>
                                 <td class="controls_td">
                                     <a href="javascript:;" class="open_controls"><i class="fa fa-caret-square-o-left"></i></a>
                                     <div class="controls_container">

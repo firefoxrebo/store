@@ -7,12 +7,9 @@ $_['text_file_label'] = 'صورة موقعة من الادارة لسند الص
 $_['text_submit'] = 'حفظ';
 
 $_['text_table_ref'] = 'رقم السند';
-$_['text_table_invoice'] = 'رقم الفاتورة';
-$_['text_table_supplier'] = 'المورد';
 $_['text_table_created'] = 'بتاريخ';
 $_['text_table_payment'] = 'قيمة السند';
-$_['text_table_number'] = 'رقم الشيك او التحويل';
-$_['text_table_payment_type'] = 'طريقة الدفع';
+$_['text_table_description'] = 'وصف المصروف';
 $_['text_table_control'] = 'التحكم';
 $_['text_table_control_view'] = 'عرض / طباعة السند';
 $_['text_table_control_edit'] = 'تعديل بيانات السند';

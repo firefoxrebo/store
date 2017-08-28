@@ -26,17 +26,18 @@ class SupplierInvoicePaymentVoucherModel extends AbstractModel
         'paymentType'       => self::DATA_TYPE_STR,
         'userId'            => self::DATA_TYPE_INT,
         'created'           => self::DATA_TYPE_STR,
-        'file'              => self::DATA_TYPE_STR,
+        'file'              => self::DATA_TYPE_STR
     );
 
-    public function invoiceCanAdd()
+    public function invoiceCanAdd($oldPayment = 0)
     {
-        $previousPayments = self::get('
-            SELECT SUM(payment) previousPayments, 
-            (SELECT SUM(price) FROM app_suppliers_invoices_details WHERE app_suppliers_invoices_details.invoiceId = ' . $this->invoiceId . ') invoiceTotal
-             FROM ' . self::$tableName . ' WHERE invoiceId = ' . $this->invoiceId . ' Having invoiceTotal >= previousPayments
-        ');
-        return $previousPayments === false ? true : false;
+        $previousPayments = self::get(
+            "
+            SELECT IFNULL(SUM(payment),0) previousPayments, 
+            (SELECT SUM(price * quantity) FROM app_suppliers_invoices_details WHERE app_suppliers_invoices_details.invoiceId = {$this->invoiceId}) invoiceTotal
+             FROM " . self::$tableName . " WHERE invoiceId = {$this->invoiceId} Having invoiceTotal >= (previousPayments - {$oldPayment} + {$this->payment})"
+        );
+        return $previousPayments === false ? false : true;
     }
 
     public static function invoiceIsSettled(SupplierInvoiceModel $invoiceModel)
@@ -51,7 +52,7 @@ class SupplierInvoicePaymentVoucherModel extends AbstractModel
     public static function getAll()
     {
         return self::get(
-        'SELECT *, getSupplierName(' . self::$tableName . '.invoiceId) supplier 
+        'SELECT *, (SELECT created FROM app_suppliers_invoices WHERE app_suppliers_invoices.id = ' . self::$tableName . '.invoiceId) icreated, getSupplierName(' . self::$tableName . '.invoiceId) supplier 
               FROM ' . self::$tableName
         );
     }
@@ -59,7 +60,7 @@ class SupplierInvoicePaymentVoucherModel extends AbstractModel
     public static function getForInvoice(SupplierInvoiceModel $invoice)
     {
         return self::get(
-            'SELECT *, getSupplierName(' . self::$tableName . '.invoiceId) supplier 
+            'SELECT *, (SELECT created FROM app_suppliers_invoices WHERE app_suppliers_invoices.id = ' . self::$tableName . '.invoiceId) icreated, getSupplierName(' . self::$tableName . '.invoiceId) supplier 
               FROM ' . self::$tableName . ' WHERE invoiceId = ' . $invoice->id
         );
     }

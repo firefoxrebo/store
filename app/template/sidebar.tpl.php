@@ -25,14 +25,14 @@
                 </li>
 
                 <li>
-                    <a href="/expenses" class="<?php if($this->highlightMenu('expenses')) echo 'selected'; ?>">
+                    <a href="/expenses" class="<?php if($this->highlightMenu(['expenses', 'expensescategories','expenseslist'])) echo 'selected'; ?>">
                         <i class="fa fa-money"></i>
                     </a>
                     <span><?= $text_ctrl_expenses; ?></span>
                 </li>
 
                 <li>
-                    <a href="/safetybox" class="<?php if($this->highlightMenu(array('safetybox', 'receiptvoucher', 'paymentvoucher'))) echo 'selected'; ?>">
+                    <a href="/safetybox" class="<?php if($this->highlightMenu(array('safetybox', 'receiptvoucher', 'paymentvoucher', 'outcomevouchers', 'incomevouchers'))) echo 'selected'; ?>">
                         <i class="fa fa-inbox"></i>
                     </a>
                     <span><?= $text_ctrl_bank; ?></span>

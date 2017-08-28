@@ -30,7 +30,8 @@
                         <th>سعر الوحدة</th>
                         <th>الاجمالي</th>
                     </tr>
-                    <?php if (false !== $details): $total = 0; foreach ($details as $detail): $i = 0; ?>
+                    <?php if (false !== $details): $i = 0; $total = 0; foreach ($details as $detail): ?>
+                        <?= ($i == 13) ? '<tr class="break"><td colspan="6"></td></tr>' : '' ?>
                         <tr>
                             <td>
                                 <?= ++$i ?>

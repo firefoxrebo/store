@@ -6,11 +6,12 @@ use Lilly\Core\Helper;
 use Lilly\Core\Messenger;
 use Lilly\Core\MVC\AbstractController;
 use Lilly\Core\Validator;
+use Lilly\Models\OutComeVoucherModel;
 use Lilly\Models\SupplierInvoiceModel;
 use Lilly\Models\SupplierInvoicePaymentVoucherModel;
 
 
-class PaymentVoucherController extends AbstractController
+class OutComeVouchersController extends AbstractController
 {
     use Filter;
     use Validator;
@@ -18,17 +19,11 @@ class PaymentVoucherController extends AbstractController
 
     public function defaultAction ()
     {
-        $this->lang->load('paymentvoucher|default');
-        $this->lang->load('paymentvoucher|label');
+        $this->lang->load('outcomevouchers|default');
+        $this->lang->load('outcomevouchers|label');
         $this->lang->load('common|template');
 
-        $id = $this->_getParam(0, 'int');
-        $invoice = SupplierInvoiceModel::getByPK($id);
-        if(false !== $id && false !== $invoice) {
-            $this->_data['vouchers'] = SupplierInvoicePaymentVoucherModel::getForInvoice($invoice);
-        } else {
-            $this->_data['vouchers'] = SupplierInvoicePaymentVoucherModel::getAll();
-        }
+        $this->_data['vouchers'] = OutComeVoucherModel::getAll();
 
         $this->injectDataTable();
         $this->_render();
@@ -48,8 +43,8 @@ class PaymentVoucherController extends AbstractController
             $this->routeTo('/purchases');
         }
 
-        $this->lang->load('paymentvoucher|add');
-        $this->lang->load('paymentvoucher|label');
+        $this->lang->load('outcomevouchers|add');
+        $this->lang->load('outcomevouchers|label');
         $this->lang->load('common|template');
 
         $this->lang->feed('title', [$invoice->id]);
@@ -73,20 +68,20 @@ class PaymentVoucherController extends AbstractController
                     if($voucher->save()) {
                         $this->messenger->add(
                             'message',
-                            $this->lang->get('paymentvoucher|common', 'add_success')
+                            $this->lang->get('outcomevouchers|common', 'add_success')
                         );
-                        $this->routeTo('/purchases');
+                        $this->routeTo('/paymentvoucher');
                     } else {
                         $this->messenger->add(
                             'message',
-                            $this->lang->get('paymentvoucher|common', 'add_error'),
+                            $this->lang->get('outcomevouchers|common', 'add_error'),
                             Messenger::STATUS_ERROR
                         );
                     }
                 } else {
                     $this->messenger->add(
                         'message',
-                        $this->lang->get('paymentvoucher|common', 'over_payment'),
+                        $this->lang->get('outcomevouchers|common', 'over_payment'),
                         Messenger::STATUS_ERROR
                     );
                 }
@@ -110,8 +105,8 @@ class PaymentVoucherController extends AbstractController
 
         $invoice = SupplierInvoiceModel::getByPK($voucher->invoiceId);
 
-        $this->lang->load('paymentvoucher|add');
-        $this->lang->load('paymentvoucher|label');
+        $this->lang->load('outcomevouchers|add');
+        $this->lang->load('outcomevouchers|label');
         $this->lang->load('common|template');
 
         $this->lang->feed('title', [$invoice->id]);
@@ -133,20 +128,20 @@ class PaymentVoucherController extends AbstractController
                     if($voucher->save()) {
                         $this->messenger->add(
                             'message',
-                            $this->lang->get('paymentvoucher|common', 'edit_success')
+                            $this->lang->get('outcomevouchers|common', 'edit_success')
                         );
                         $this->routeTo('/paymentvoucher');
                     } else {
                         $this->messenger->add(
                             'message',
-                            $this->lang->get('paymentvoucher|common', 'edit_error'),
+                            $this->lang->get('outcomevouchers|common', 'edit_error'),
                             Messenger::STATUS_ERROR
                         );
                     }
                 } else {
                     $this->messenger->add(
                         'message',
-                        $this->lang->get('paymentvoucher|common', 'over_payment'),
+                        $this->lang->get('outcomevouchers|common', 'over_payment'),
                         Messenger::STATUS_ERROR
                     );
                 }
@@ -169,13 +164,13 @@ class PaymentVoucherController extends AbstractController
         if(!$this->requestHasValidToken($_POST['token']) && $voucher->delete()) {
             $this->messenger->add(
                 'message',
-                $this->lang->get('paymentvoucher|common', 'delete_success')
+                $this->lang->get('outcomevouchers|common', 'delete_success')
             );
             $this->routeBack('/paymentvoucher');
         } else {
             $this->messenger->add(
                 'message',
-                $this->lang->get('paymentvoucher|common', 'delete_error'),
+                $this->lang->get('outcomevouchers|common', 'delete_error'),
                 Messenger::STATUS_ERROR
             );
         }
@@ -195,8 +190,8 @@ class PaymentVoucherController extends AbstractController
 
         $invoice = SupplierInvoiceModel::getByPK($voucher->invoiceId);
 
-        $this->lang->load('paymentvoucher|attachcopy');
-        $this->lang->load('paymentvoucher|label');
+        $this->lang->load('outcomevouchers|attachcopy');
+        $this->lang->load('outcomevouchers|label');
         $this->lang->load('common|template');
 
         $this->lang->feed('title', [$invoice->id]);
@@ -221,12 +216,12 @@ class PaymentVoucherController extends AbstractController
                 if($voucher->save()) {
                     $this->messenger->add(
                         'message',
-                        $this->lang->get('paymentvoucher|common', 'attach_success')
+                        $this->lang->get('outcomevouchers|common', 'attach_success')
                     );
                 } else {
                     $this->messenger->add(
                         'message',
-                        $this->lang->get('paymentvoucher|common', 'attach_error'),
+                        $this->lang->get('outcomevouchers|common', 'attach_error'),
                         Messenger::STATUS_ERROR
                     );
                 }
